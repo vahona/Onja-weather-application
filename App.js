@@ -1,9 +1,11 @@
 import React from 'react'
+import Searchplace from "./components/Searchplace"
 
 function App() {
     return (
         <>
-        <h1>Weather application</h1>
+        <h1> Weather application </h1>
+        <Searchplace/>
         </>
     )
 }

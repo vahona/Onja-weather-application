@@ -32278,9 +32278,36 @@ exports.Context = Context;
 function ContextProvider({
   children
 }) {
-  return /*#__PURE__*/_react.default.createElement(Context.Provider, null, children);
+  const [location, setLocation] = (0, _react.useState)(""); // Feacting the api
+
+  let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
+  const locations = `query=${location}`;
+
+  if (location !== "") {
+    API_URL = API_URL + locations;
+  }
+
+  const locationWeather = async () => {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      setLocation(data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  (0, _react.useEffect)(() => {
+    locationWeather();
+  }, [location]);
+  return /*#__PURE__*/_react.default.createElement(Context.Provider, {
+    value: {
+      location,
+      setLocation
+    }
+  }, children);
 }
-},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/Searchplace.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32292,13 +32319,33 @@ var _react = _interopRequireDefault(require("react"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function Searchplace() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("label", null), /*#__PURE__*/_react.default.createElement("input", null), /*#__PURE__*/_react.default.createElement("button", null, "Search")));
+}
+
+var _default = Searchplace;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Searchplace = _interopRequireDefault(require("./components/Searchplace"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function App() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather application"));
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", null, " Weather application "), /*#__PURE__*/_react.default.createElement(_Searchplace.default, null));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./components/Searchplace":"components/Searchplace.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
