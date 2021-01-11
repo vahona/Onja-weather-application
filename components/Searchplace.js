@@ -1,22 +1,36 @@
-import React from 'react'
+
+
+import React, { useContext } from "react";
+import { Context } from "../Context";
 
 function Searchplace() {
-    return (
+   const { location, setLocation, weather, setWeather } = useContext(Context);
+    function searchLocation(e) {
+       e.preventDefault()
+       setLocation(e.target.location.value)
+    }
+
+    const TypeLocation = weather.map((local) => {
+      return (
         <div>
-            <form>
-                <div> X </div>
-                <label>
-                   
-                </label>
-                <input
-
-
-                 />
-
-                 <button>Search</button>
-            </form>
+          <div>{local.title}</div>
         </div>
-    )
+      );
+    });
+
+    return (
+      <div>
+        <div> X </div>
+        <form onSubmit={searchLocation}>
+          <label></label>
+          <input type="text" id="title" />
+
+          <button>Search</button>
+        </form>
+        <input />
+        <div>{TypeLocation}</div>
+      </div>
+    );
 }
 
 export default Searchplace

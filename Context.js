@@ -4,7 +4,8 @@ const Context = React.createContext();
 
 function ContextProvider({children}) {
 
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState("london");
+    const [weather, setWeather] = useState([])
 
     // Feacting the api
 
@@ -19,23 +20,22 @@ function ContextProvider({children}) {
         try {
             const response = await fetch(API_URL)
             const data = await response.json()
-            setLocation(data)
+            console.log("kkkk",data);
+            setWeather(data)
         } catch (e) {
             console.error(e);
         }
     }
 
-
-
     useEffect(() => {
-         locationWeather()
+         locationWeather();
     }, [location])
 
-    return(
-        <Context.Provider value={{location, setLocation}}>
-            {children}
-        </Context.Provider>
-    )
+    return (
+      <Context.Provider value={{ location, setLocation, weather, setWeather }}>
+        {children}
+      </Context.Provider>
+    );
 }
 
 export {ContextProvider, Context}
