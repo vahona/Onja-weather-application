@@ -32282,7 +32282,7 @@ function ContextProvider({
   const [weather, setWeather] = (0, _react.useState)([]); // Feacting the api
 
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
-  const locations = `query=${location}`;
+  const locations = `query=${location}`; //   let API_URL2 = `https:www.metaweather.com/api/location/44418/`
 
   if (location !== "") {
     API_URL = API_URL + locations;
@@ -32341,7 +32341,7 @@ function Searchplace() {
   }
 
   const TypeLocation = weather.map(local => {
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, local.title));
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, local.title), /*#__PURE__*/_react.default.createElement("div", null, local.woeid), /*#__PURE__*/_react.default.createElement("div", null, local.location_type), /*#__PURE__*/_react.default.createElement("div", null, local.latt_long));
   });
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
@@ -32441,7 +32441,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55370" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62170" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
