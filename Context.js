@@ -11,7 +11,7 @@ function ContextProvider({children}) {
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
   const locations = `query=${location}`;
 
-//   let API_URL2 = `https:www.metaweather.com/api/location/44418/`
+  // let API_URL2 = `https://cors-anywhere.herokuapp.com/https:www.metaweather.com/api/location/44418/`
 
   if (location !== "") {
     API_URL = API_URL + locations;
@@ -31,8 +31,6 @@ function ContextProvider({children}) {
   useEffect(() => {
     locationWeather();
   }, [location]);
-
-
 
   return (
     <Context.Provider value={{ location, setLocation, weather, setWeather }}>

@@ -1,5 +1,4 @@
 
-
 import React, { useContext } from "react";
 import { Context } from "../Context";
 
@@ -11,9 +10,9 @@ function Searchplace() {
         setLocation(e.target.location.value)
     }
 
-    const TypeLocation = weather.map((local) => {
+    const TypeLocation = weather && weather.map((local) => {
       return (
-        <div>
+        <div >
           <div>{local.title}</div>
           <div>{local.woeid}</div>
           <div>{local.location_type}</div>
@@ -27,10 +26,9 @@ function Searchplace() {
         <div> X </div>
         <form onSubmit={searchLocation}>
           <label></label>
-          <input type="text" id="title" />
+          <input type="text" id="location" />
           <button>Search</button>
         </form>
-        <input />
         <div>{TypeLocation}</div>
       </div>
     );

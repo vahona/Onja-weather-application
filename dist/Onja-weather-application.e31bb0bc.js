@@ -32282,7 +32282,7 @@ function ContextProvider({
   const [weather, setWeather] = (0, _react.useState)([]); // Feacting the api
 
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
-  const locations = `query=${location}`; //   let API_URL2 = `https:www.metaweather.com/api/location/44418/`
+  const locations = `query=${location}`; // let API_URL2 = `https://cors-anywhere.herokuapp.com/https:www.metaweather.com/api/location/44418/`
 
   if (location !== "") {
     API_URL = API_URL + locations;
@@ -32340,15 +32340,15 @@ function Searchplace() {
     setLocation(e.target.location.value);
   }
 
-  const TypeLocation = weather.map(local => {
+  const TypeLocation = weather && weather.map(local => {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, local.title), /*#__PURE__*/_react.default.createElement("div", null, local.woeid), /*#__PURE__*/_react.default.createElement("div", null, local.location_type), /*#__PURE__*/_react.default.createElement("div", null, local.latt_long));
   });
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("label", null), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
-    id: "title"
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search")), /*#__PURE__*/_react.default.createElement("input", null), /*#__PURE__*/_react.default.createElement("div", null, TypeLocation));
+    id: "location"
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search")), /*#__PURE__*/_react.default.createElement("div", null, TypeLocation));
 }
 
 var _default = Searchplace;
