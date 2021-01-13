@@ -1,4 +1,5 @@
 import React, { Children, useEffect, useState } from  "react"
+import { useParams } from "react-router-dom";
 
 const Context = React.createContext();
 
@@ -12,23 +13,31 @@ function ContextProvider({children}) {
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
   const locations = `query=${location}`;
 
-  let API_URL2 = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/44418/`;
+  let API_URL2 = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/`;
+  const woeidLocation = `${locationWoeid}/`;
+  
+
 
  if (location !== "") {
   API_URL = API_URL + locations;
 }
 
+ if (locationWoeid !== "") {
+    API_URL2 = API_URL2 + woeidLocation;
+ }
+
 const locationWoeidWeather = async () => {
+
   try {
-    const responses = await fetch(API_URL2)
-    console.log("oo",responses)
+    const responses = await fetch(API_URL2);
+    console.log("oo", responses);
     const datas = await responses.json();
     setWeather(datas.consolidated_weather);
     console.log("ppp", datas.consolidated_weather);
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
-}
+};
 
   const locationWeather = async () => {
     try {
