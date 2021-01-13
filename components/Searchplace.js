@@ -26,18 +26,15 @@ function Searchplace() {
             <div>{local.weather_state_name}</div>
             <div>{local.weather_state_abbr}</div>
             <div>{local.wind_direction_compass}</div>
-            <div>{local.min_temp}</div>
+            <div>
+              {Math.round(local.min_temp)}
+              <sup> C</sup>
+            </div>
             <div>{local.max_temp}</div>
           </Container>
-          
         </div>
       );
     });
-
-
-    
-
-   
 
     return (
       <Table>
