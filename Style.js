@@ -2,10 +2,10 @@ import styled from 'styled-components'
 import Styled from 'styled-components'
 
 export const Container = styled.div`
-  border: 1px solid gray;
   background-color: #1e213a;
   color: white;
-  padding: 2rem
+  padding: 3rem;
+  
 `;
 
 export const Body = styled.div`
@@ -21,6 +21,10 @@ export const Table = styled.div`
   display: grid;
   grid-template-columns: 200px auto;
 `;
+
+export const Griddiv = styled.div`
+   grid-column: 1
+`
 
 export const Tablegrid = styled.div`
   display: grid;

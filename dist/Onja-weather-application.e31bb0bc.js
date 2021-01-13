@@ -34264,17 +34264,17 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tablegrid = exports.Table = exports.Header = exports.Body = exports.Container = void 0;
+exports.Tablegrid = exports.Griddiv = exports.Table = exports.Header = exports.Body = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const Container = _styledComponents.default.div`
-  border: 1px solid gray;
   background-color: #1e213a;
   color: white;
-  padding: 2rem
+  padding: 3rem;
+  
 `;
 exports.Container = Container;
 const Body = _styledComponents.default.div`
@@ -34291,6 +34291,10 @@ const Table = _styledComponents.default.div`
   grid-template-columns: 200px auto;
 `;
 exports.Table = Table;
+const Griddiv = _styledComponents.default.div`
+   grid-column: 1
+`;
+exports.Griddiv = Griddiv;
 const Tablegrid = _styledComponents.default.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -34332,16 +34336,18 @@ function Searchplace() {
     setLocation(e.target.location.value);
   }
 
-  const TypeLocation = weather.map(local => {
+  const TypeLocation = location && weather.map(local => {
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_abbr), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, local.max_temp)));
   });
-  return /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
+  const locationweather = weather.map(locationtitle => {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, locationtitle.title, console.log(locationtitle.title)), /*#__PURE__*/_react.default.createElement("div", null, locationtitle.woeid));
+  });
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("label", null), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
-    id: "location",
-    placeholder: "london"
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation), /*#__PURE__*/_react.default.createElement("h2", null, "Today's Hightlight"), /*#__PURE__*/_react.default.createElement("div", null));
+    id: "location"
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null, locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation), /*#__PURE__*/_react.default.createElement("div", null)), /*#__PURE__*/_react.default.createElement("h2", null, "Today's Hightlight"));
 }
 
 var _default = Searchplace;
@@ -34436,7 +34442,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50997" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64090" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

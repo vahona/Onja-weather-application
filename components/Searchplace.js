@@ -19,7 +19,7 @@ function Searchplace() {
         setLocation(e.target.location.value)
     }
 
-    const TypeLocation = weather.map((local) => {
+    const TypeLocation = location && weather.map((local) => {
       return (
         <div>
           <Container>
@@ -36,20 +36,37 @@ function Searchplace() {
       );
     });
 
+
+
+    const locationweather = weather.map((locationtitle) => {
+      return (
+        <>
+          <div>
+            {locationtitle.title}
+            {console.log(locationtitle.title)}
+          </div>
+          <div>{locationtitle.woeid}</div>
+        </>
+      );
+    })
+
     return (
-      <Table>
-        <div>
-          <div> X </div>
-          <form onSubmit={searchLocation}>
-            <label></label>
-            <input type="text" id="location" placeholder="london" />
-            <button>Search</button>
-          </form>
-        </div>
-        <Tablegrid>{TypeLocation}</Tablegrid>
+      <>
+        <Table>
+          <div>
+            <div> X </div>
+            <form onSubmit={searchLocation}>
+              <label></label>
+              <input type="text" id="location" />
+              <button>Search</button>
+            </form>
+          </div>
+          <div>{locationweather}</div>
+          <Tablegrid>{TypeLocation}</Tablegrid>
+          <div></div>
+        </Table>
         <h2>Today's Hightlight</h2>
-        <div></div>
-      </Table>
+      </>
     );
 }
 
