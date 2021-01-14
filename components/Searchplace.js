@@ -18,16 +18,16 @@ function Searchplace() {
     setLocation(e.target.location.value);
   }
 
-  const TypeLocation = weather.map((local) => {
+  const TypeLocation = weather.slice(1).map((local) => {
       // const abbr = weather;
-      const abbreviation = `https://www.metaweather.com/static/img/weather/t.svg`;
+      // const abbreviation = `
     return (
       <div>
         <Container>
           <div>{local.weather_state_name}</div>
-            <img
-              src={abbreviation}
-            />
+          <img
+            src={`https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`}
+          />
           <div>{local.wind_direction_compass}</div>
           <div>
             <div>
@@ -36,7 +36,7 @@ function Searchplace() {
             </div>
             <div>
               {Math.round(local.max_temp)}
-              <sup>C</sup>
+              <sup>ºC</sup>
             </div>
           </div>
         </Container>
@@ -47,20 +47,62 @@ function Searchplace() {
   const locationweather = weather.map((locationtitle) => {
     return (
       <>
+        
         <div>{locationtitle.title}</div>
       </>
     );
   });
 
-  const timeToday = weather.map((today) => {
-    // weather.length = 1
+  const timeToday = weather.slice(0, 1).map((today) => {
 
     return (
       <>
-        <div>{today.humidity}</div>
+        <img
+          src={`https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`}
+        />
+        <div>
+          <div>
+            {Math.round(today.min_temp)}
+            <sup> C</sup>
+          </div>
+          <div>
+            {Math.round(today.max_temp)}
+            <sup>ºC</sup>
+          </div>
+        </div>
       </>
     );
   });
+
+
+  const windWeahter = weather.slice(0, 1).map((wind) => {
+    return (
+      <div>
+        <div>
+          <h3>Wind status</h3>
+          <div></div>
+        </div>
+        <div>
+          <h3>Humidity</h3>
+          <div>{wind.humidity}%</div>
+          <label for="file">File progress:</label>
+
+          <progress id="file" max="100" value={wind.humidity}>
+            {" "}
+            70%{" "}
+          </progress>
+        </div>
+        <div>
+          <h3>Visibility</h3>
+          <div>{wind.visibility}</div>
+        </div>
+        <div>
+          <h3>Air presseur</h3>
+          <div>{wind.air_pressure}</div>
+        </div>
+      </div>
+    );
+  })
 
   return (
     <>
@@ -73,12 +115,13 @@ function Searchplace() {
         </form>
       </div>
       <Table>
-        <div>{locationweather}</div>
+        <div>
+          {timeToday} {locationweather}
+        </div>
         <Tablegrid>{TypeLocation}</Tablegrid>
-        <div></div>
       </Table>
       <h2> Today's Hightlight </h2>
-      <div>{timeToday}</div>
+      <div>{windWeahter}</div>
     </>
   );
 }

@@ -34337,26 +34337,36 @@ function Searchplace() {
     setLocation(e.target.location.value);
   }
 
-  const TypeLocation = weather.map(local => {
+  const TypeLocation = weather.slice(1).map(local => {
     // const abbr = weather;
-    const abbreviation = `https://www.metaweather.com/static/img/weather/t.svg`;
+    // const abbreviation = `
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("img", {
-      src: abbreviation
-    }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "C")))));
+      src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
+    }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
   const locationweather = weather.map(locationtitle => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, locationtitle.title));
   });
-  const timeToday = weather.map(today => {
-    // weather.length = 1
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, today.humidity));
+  const timeToday = weather.slice(0, 1).map(today => {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("img", {
+      src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
+    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(today.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC"))));
+  });
+  const windWeahter = weather.slice(0, 1).map(wind => {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), /*#__PURE__*/_react.default.createElement("div", null)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("label", {
+      for: "file"
+    }, "File progress:"), /*#__PURE__*/_react.default.createElement("progress", {
+      id: "file",
+      max: "100",
+      value: wind.humidity
+    }, " ", "70%", " ")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement("div", null, wind.visibility)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure)));
   });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("label", null), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation), /*#__PURE__*/_react.default.createElement("div", null)), /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, timeToday));
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter));
 }
 
 var _default = Searchplace;
