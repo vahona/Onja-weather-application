@@ -10,6 +10,10 @@ import {
   Hightlight,
   GrayDeg,
   TodayDegree,
+  Speed,
+  Visibility,
+  SubSpeed ,
+  SubVisibility
 } from "../Style";
 
 function Searchplace() {
@@ -83,7 +87,9 @@ function Searchplace() {
       <div>
         <Container2>
           <h3>Wind status</h3>
-          <div></div>
+          <Speed>
+            {Math.round(wind.wind_speed)} <SubSpeed> mph </SubSpeed>
+          </Speed>
         </Container2>
         <Container2>
           <h3>Humidity</h3>
@@ -97,7 +103,10 @@ function Searchplace() {
         </Container2>
         <Container2>
           <h3>Visibility</h3>
-          <div>{wind.visibility}</div>
+          <Visibility>
+            {Math.round(wind.visibility)}
+            <SubVisibility>miles</SubVisibility>
+          </Visibility>
         </Container2>
         <Container2>
           <h3>Air presseur</h3>

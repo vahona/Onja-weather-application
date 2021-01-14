@@ -63,3 +63,32 @@ export const TodayDegree = styled.div`
   line-height: 169px;
   color: #e7e7eb;
 `;
+
+export const Speed = styled.div`
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 75px;
+  color: #e7e7eb;
+`;
+
+export const Visibility = styled.div`
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 75px;
+  text-align: center;
+`;
+
+export const SubSpeed = styled.sub`
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 75px;
+  color: #e7e7eb;
+`;
+
+export const SubVisibility = styled.sub`
+  font-weight: bold;
+  font-size: 50px;
+  line-height: 75px;
+  text-align: center;
+  color: #e7e7eb;
+`;
