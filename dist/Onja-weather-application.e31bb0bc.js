@@ -34338,9 +34338,11 @@ function Searchplace() {
   }
 
   const TypeLocation = weather.map(local => {
+    // const abbr = weather;
+    const abbreviation = `https://www.metaweather.com/static/img/weather/t.svg`;
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("img", {
-      src: "https:://static/img/weather/png/t.png"
-    }), /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_abbr), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "C")))));
+      src: abbreviation
+    }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "C")))));
   });
   const locationweather = weather.map(locationtitle => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, locationtitle.title));
@@ -34449,7 +34451,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52998" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58724" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
