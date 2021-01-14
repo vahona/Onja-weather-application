@@ -1,7 +1,16 @@
 import React, { useContext } from "react";
 import { Context } from "../Context";
 
-import { Container, Table, Tablegrid } from "../Style";
+import {
+  Container,
+  Container2,
+  Degre,
+  Table,
+  Tablegrid,
+  Hightlight,
+  GrayDeg,
+  TodayDegree,
+} from "../Style";
 
 function Searchplace() {
   const {
@@ -29,16 +38,16 @@ function Searchplace() {
             src={`https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`}
           />
           <div>{local.wind_direction_compass}</div>
-          <div>
+          <Degre>
             <div>
               {Math.round(local.min_temp)}
-              <sup> C</sup>
+              <sup>º C</sup>
             </div>
-            <div>
+            <GrayDeg>
               {Math.round(local.max_temp)}
               <sup>ºC</sup>
-            </div>
-          </div>
+            </GrayDeg>
+          </Degre>
         </Container>
       </div>
     );
@@ -60,16 +69,10 @@ function Searchplace() {
         <img
           src={`https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`}
         />
-        <div>
-          <div>
-            {Math.round(today.min_temp)}
-            <sup> C</sup>
-          </div>
-          <div>
+      <TodayDegree>
             {Math.round(today.max_temp)}
             <sup>ºC</sup>
-          </div>
-        </div>
+        </TodayDegree>
       </>
     );
   });
@@ -78,11 +81,11 @@ function Searchplace() {
   const windWeahter = weather.slice(0, 1).map((wind) => {
     return (
       <div>
-        <div>
+        <Container2>
           <h3>Wind status</h3>
           <div></div>
-        </div>
-        <div>
+        </Container2>
+        <Container2>
           <h3>Humidity</h3>
           <div>{wind.humidity}%</div>
           <label for="file">File progress:</label>
@@ -91,15 +94,15 @@ function Searchplace() {
             {" "}
             70%{" "}
           </progress>
-        </div>
-        <div>
+        </Container2>
+        <Container2>
           <h3>Visibility</h3>
           <div>{wind.visibility}</div>
-        </div>
-        <div>
+        </Container2>
+        <Container2>
           <h3>Air presseur</h3>
           <div>{wind.air_pressure}</div>
-        </div>
+        </Container2>
       </div>
     );
   })
@@ -120,8 +123,10 @@ function Searchplace() {
         </div>
         <Tablegrid>{TypeLocation}</Tablegrid>
       </Table>
-      <h2> Today's Hightlight </h2>
-      <div>{windWeahter}</div>
+      <Hightlight>
+        <h2> Today's Hightlight </h2>
+        <div>{windWeahter}</div>
+      </Hightlight>
     </>
   );
 }

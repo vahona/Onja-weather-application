@@ -34266,7 +34266,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Tablegrid = exports.Griddiv = exports.Table = exports.Header = exports.Body = exports.Container = void 0;
+exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Hightlight = exports.Table = exports.Header = exports.Body = exports.Container2 = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34279,6 +34279,15 @@ const Container = _styledComponents.default.div`
   
 `;
 exports.Container = Container;
+const Container2 = _styledComponents.default.div`
+  background-color: #1e213a;
+  color: white;
+  padding: 3rem;
+  padding-right: 10%;
+  margin-bottom: 2rem;
+  margin: 1rem;
+`;
+exports.Container2 = Container2;
 const Body = _styledComponents.default.div`
   color: white
 `;
@@ -34292,6 +34301,10 @@ const Table = _styledComponents.default.div`
   grid-template-columns: 200px auto;
 `;
 exports.Table = Table;
+const Hightlight = _styledComponents.default.div`
+  grid-column: 2 / 1;
+`;
+exports.Hightlight = Hightlight;
 const Griddiv = _styledComponents.default.div`
    grid-column: 1
 `;
@@ -34304,6 +34317,24 @@ const Tablegrid = _styledComponents.default.div`
   
 `;
 exports.Tablegrid = Tablegrid;
+const Degre = _styledComponents.default.div`
+  display: flex;
+  justify-content: space-between;
+`;
+exports.Degre = Degre;
+const GrayDeg = _styledComponents.default.div`
+  color: gray
+
+`;
+exports.GrayDeg = GrayDeg;
+const TodayDegree = _styledComponents.default.div`
+  font-style: normal;
+  font-weight: 500;
+  font-size: 144px;
+  line-height: 169px;
+  color: #e7e7eb;
+`;
+exports.TodayDegree = TodayDegree;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Searchplace.js":[function(require,module,exports) {
 "use strict";
 
@@ -34342,7 +34373,7 @@ function Searchplace() {
     // const abbreviation = `
     return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
+    }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
   const locationweather = weather.map(locationtitle => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, locationtitle.title));
@@ -34350,23 +34381,23 @@ function Searchplace() {
   const timeToday = weather.slice(0, 1).map(today => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(today.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC"))));
+    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")));
   });
   const windWeahter = weather.slice(0, 1).map(wind => {
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), /*#__PURE__*/_react.default.createElement("div", null)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("label", {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), /*#__PURE__*/_react.default.createElement("div", null)), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("label", {
       for: "file"
     }, "File progress:"), /*#__PURE__*/_react.default.createElement("progress", {
       id: "file",
       max: "100",
       value: wind.humidity
-    }, " ", "70%", " ")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement("div", null, wind.visibility)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure)));
+    }, " ", "70%", " ")), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement("div", null, wind.visibility)), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure)));
   });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("label", null), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter));
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
 }
 
 var _default = Searchplace;
@@ -34461,7 +34492,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58724" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59825" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
