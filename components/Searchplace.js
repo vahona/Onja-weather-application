@@ -19,24 +19,29 @@ function Searchplace() {
         setLocation(e.target.location.value)
     }
 
-    const TypeLocation = location && weather.map((local) => {
+    const TypeLocation = weather.map((local) => {
+
       return (
         <div>
           <Container>
             <div>{local.weather_state_name}</div>
+            <img src="https:://static/img/weather/png/t.png" />
             <div>{local.weather_state_abbr}</div>
             <div>{local.wind_direction_compass}</div>
             <div>
-              {Math.round(local.min_temp)}
-              <sup> C</sup>
+              <div>
+                {Math.round(local.min_temp)}
+                <sup> C</sup>
+              </div>
+              <div>
+                {Math.round(local.max_temp)}
+                <sup>C</sup>
+              </div>
             </div>
-            <div>{local.max_temp}</div>
           </Container>
         </div>
       );
     });
-
-
 
     const locationweather = weather.map((locationtitle) => {
       return (
@@ -48,22 +53,34 @@ function Searchplace() {
       );
     })
 
+    const timeToday = weather.map((today) => {
+          // weather.length = 1
+
+          return (
+            <>
+              <div>{today.humidity}</div>
+            </>
+          );
+    })
+
     return (
       <>
+        <div>
+          <div> X </div>
+          <form onSubmit={searchLocation}>
+            <label></label>
+            <input type="text" id="location" />
+            <button>Search</button>
+          </form>
+        </div>
         <Table>
-          <div>
-            <div> X </div>
-            <form onSubmit={searchLocation}>
-              <label></label>
-              <input type="text" id="location" />
-              <button>Search</button>
-            </form>
-          </div>
           <div>{locationweather}</div>
           <Tablegrid>{TypeLocation}</Tablegrid>
           <div></div>
         </Table>
-        <h2>Today's Hightlight</h2>
+        <h2> Today's Hightlight </h2>
+        <div>{timeToday}</div>
+       
       </>
     );
 }

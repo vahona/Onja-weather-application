@@ -32301,6 +32301,7 @@ function ContextProvider({
     try {
       const responses = await fetch(API_URL2);
       const datas = await responses.json();
+      console.log(datas);
       setWeather(datas.consolidated_weather);
     } catch (e) {
       console.error(e);
@@ -34279,7 +34280,6 @@ const Container = _styledComponents.default.div`
 `;
 exports.Container = Container;
 const Body = _styledComponents.default.div`
-  background-color: #333333;
   color: white
 `;
 exports.Body = Body;
@@ -34337,18 +34337,24 @@ function Searchplace() {
     setLocation(e.target.location.value);
   }
 
-  const TypeLocation = location && weather.map(local => {
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_abbr), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, local.max_temp)));
+  const TypeLocation = weather.map(local => {
+    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("img", {
+      src: "https:://static/img/weather/png/t.png"
+    }), /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_abbr), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, " C")), /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "C")))));
   });
   const locationweather = weather.map(locationtitle => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, locationtitle.title));
   });
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
+  const timeToday = weather.map(today => {
+    // weather.length = 1
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, today.humidity));
+  });
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("label", null), /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null, locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation), /*#__PURE__*/_react.default.createElement("div", null)), /*#__PURE__*/_react.default.createElement("h2", null, "Today's Hightlight"));
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation), /*#__PURE__*/_react.default.createElement("div", null)), /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, timeToday));
 }
 
 var _default = Searchplace;

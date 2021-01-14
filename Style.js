@@ -9,7 +9,6 @@ export const Container = styled.div`
 `;
 
 export const Body = styled.div`
-  background-color: #333333;
   color: white
 `;
 
