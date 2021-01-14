@@ -43,9 +43,7 @@ function Searchplace() {
         <>
           <div>
             {locationtitle.title}
-            {console.log(locationtitle.title)}
           </div>
-          <div>{locationtitle.woeid}</div>
         </>
       );
     })

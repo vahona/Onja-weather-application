@@ -1,9 +1,9 @@
-import React, { Children, useEffect, useState } from  "react"
+import React, { Children, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Context = React.createContext();
 
-function ContextProvider({children}) {
+function ContextProvider({ children }) {
   const [location, setLocation] = useState("london");
   const [locationWoeid, setLocationWoeid] = useState("44418");
   const [weather, setWeather] = useState([]);
@@ -15,35 +15,30 @@ function ContextProvider({children}) {
 
   let API_URL2 = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/`;
   const woeidLocation = `${locationWoeid}/`;
+
+  if (location !== "") {
+    API_URL = API_URL + locations;
+  }
+
+  if (locationWoeid !== "") {
+    API_URL2 = API_URL2 + woeidLocation;
+  }
   
 
-
- if (location !== "") {
-  API_URL = API_URL + locations;
-}
-
- if (locationWoeid !== "") {
-    API_URL2 = API_URL2 + woeidLocation;
- }
-
-const locationWoeidWeather = async () => {
-
-  try {
-    const responses = await fetch(API_URL2);
-    console.log("oo", responses);
-    const datas = await responses.json();
-    setWeather(datas.consolidated_weather);
-    console.log("ppp", datas.consolidated_weather);
-  } catch (e) {
-    console.error(e);
-  }
-};
+  const locationWoeidWeather = async () => {
+    try {
+      const responses = await fetch(API_URL2);
+      const datas = await responses.json();
+      setWeather(datas.consolidated_weather);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   const locationWeather = async () => {
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
-      console.log("kkkk", data);
       setWeather(data);
     } catch (e) {
       console.error(e);
@@ -54,10 +49,16 @@ const locationWoeidWeather = async () => {
     locationWeather();
   }, [location]);
 
+  useEffect(() => {
+    weather?.map((weather) => setLocationWoeid(weather.woeid));
+    // const cityWoeid = weather?.woeid;
+    // setLocationWoeid(cityWoeid);
+  }, [weather]);
+ 
 
-   useEffect(() => {
-     locationWoeidWeather();
-   }, [locationWoeid]);
+  useEffect(() => {
+    locationWoeidWeather();
+  }, [locationWoeid]);
 
   return (
     <Context.Provider
@@ -75,4 +76,4 @@ const locationWoeidWeather = async () => {
   );
 }
 
-export {ContextProvider, Context}
+export { ContextProvider, Context };
