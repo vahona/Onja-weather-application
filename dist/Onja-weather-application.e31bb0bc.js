@@ -34285,7 +34285,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Hightlight = exports.Table = exports.Header = exports.Body = exports.Container2 = exports.Container = void 0;
+exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Hightlight = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Container3 = exports.Container1 = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34298,6 +34298,22 @@ const Container = _styledComponents.default.div`
   
 `;
 exports.Container = Container;
+const Container1 = _styledComponents.default.div`
+  background-color: #1e213a;
+  color: white;
+  padding: 4rem;
+  padding-top: 7rem;
+  z-index: 0
+`;
+exports.Container1 = Container1;
+const Container3 = _styledComponents.default.div`
+  background-color: #1e213a;
+  color: white;
+  padding-top: 7rem;
+  height: 100%;
+  z-index: 2
+`;
+exports.Container3 = Container3;
 const Container2 = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
@@ -34311,13 +34327,23 @@ const Body = _styledComponents.default.div`
   color: white
 `;
 exports.Body = Body;
+const BottomSearch = _styledComponents.default.button`
+  background-color: gray;
+  padding: 1rem;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  margin: 1rem;
+  
+`;
+exports.BottomSearch = BottomSearch;
 const Header = _styledComponents.default.h1`
   margin: 0
 `;
 exports.Header = Header;
 const Table = _styledComponents.default.div`
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 350px auto;
 `;
 exports.Table = Table;
 const Hightlight = _styledComponents.default.div`
@@ -34383,6 +34409,29 @@ const SubVisibility = _styledComponents.default.sub`
   color: #e7e7eb;
 `;
 exports.SubVisibility = SubVisibility;
+const Input = _styledComponents.default.input`
+  padding: 1rem;
+  background-color: #1e213a;
+  border: 1px solid gray
+`;
+exports.Input = Input;
+const Button = _styledComponents.default.button`
+  padding: 1rem;
+  background-color: blue;
+  color: white;
+  border: 1px solid gray;
+`;
+exports.Button = Button;
+const ButtonClose = _styledComponents.default.button`
+    position: absolute;
+    top: 3rem;
+    left: 20%;
+    color: gray;
+    background-color: transparent;
+    border: none;
+    font-size: 32px
+`;
+exports.ButtonClose = ButtonClose;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Searchplace.js":[function(require,module,exports) {
 "use strict";
 
@@ -34433,7 +34482,7 @@ function Searchplace() {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, locationtitle.title));
   });
   const timeToday = weather.slice(0, 1).map(today => {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("img", {
+    return /*#__PURE__*/_react.default.createElement(_Style.Container1, null, /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
     }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")));
   });
@@ -34446,18 +34495,18 @@ function Searchplace() {
       value: wind.humidity
     }, " ", "70%", " ")), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles"))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure)));
   });
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.BottomSearch, {
     type: "button",
     onClick: handleClick
-  }, "Search button"), model && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  }, "Search for places"), model && /*#__PURE__*/_react.default.createElement(_Style.Container3, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonClose, {
     type: "button",
     onClick: CloseSearch
   }, "X"), isOpen && /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
-  }, /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
 }
 
 var _default = Searchplace;
@@ -34503,7 +34552,7 @@ var _Style = require("./Style");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement(_Style.Body, null, /*#__PURE__*/_react.default.createElement(_Style.Header, null, " Weather application "), /*#__PURE__*/_react.default.createElement(_Searchplace.default, null));
+  return /*#__PURE__*/_react.default.createElement(_Style.Body, null, /*#__PURE__*/_react.default.createElement(_Searchplace.default, null));
 }
 
 var _default = App;

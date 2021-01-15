@@ -7,7 +7,6 @@ import { Body, Header } from "./Style";
 function App() {
     return (
         <Body>
-        <Header> Weather application </Header>
         <Searchplace/>
         </Body>
     )

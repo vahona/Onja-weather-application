@@ -3,7 +3,9 @@ import { Context } from "../Context";
 
 import {
   Container,
+  Container1,
   Container2,
+  Container3,
   Degre,
   Table,
   Tablegrid,
@@ -12,8 +14,12 @@ import {
   TodayDegree,
   Speed,
   Visibility,
-  SubSpeed ,
-  SubVisibility
+  SubSpeed,
+  SubVisibility,
+  BottomSearch,
+  Input,
+  Button,
+  ButtonClose,
 } from "../Style";
 
 function Searchplace() {
@@ -75,7 +81,7 @@ function Searchplace() {
   const timeToday = weather.slice(0, 1).map((today) => {
 
     return (
-      <>
+      <Container1>
         <img
           src={`https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`}
         />
@@ -83,7 +89,7 @@ function Searchplace() {
             {Math.round(today.max_temp)}
             <sup>ºC</sup>
         </TodayDegree>
-      </>
+      </Container1>
     );
   });
 
@@ -125,23 +131,23 @@ function Searchplace() {
   return (
     <>
       <div>
-        <button type="button" onClick={handleClick}>
-          Search button
-        </button>
+        <BottomSearch type="button" onClick={handleClick}>
+          Search for places
+        </BottomSearch>
         {model && (
-          <div>
+          <Container3>
             <div>
-              <button type="button" onClick={CloseSearch}>
+              <ButtonClose type="button" onClick={CloseSearch}>
                 X
-              </button>
+              </ButtonClose>
               {isOpen && (
                 <form onSubmit={searchLocation}>
-                  <input type="text" id="location" />
-                  <button>Search</button>
+                  <Input type="text" id="location" />
+                  <Button>Search</Button>
                 </form>
               )}
             </div>
-          </div>
+          </Container3>
         )}
       </div>
       <Table>
