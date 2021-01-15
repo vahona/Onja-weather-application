@@ -7,6 +7,8 @@ function ContextProvider({ children }) {
   const [location, setLocation] = useState("london");
   const [locationWoeid, setLocationWoeid] = useState("44418");
   const [weather, setWeather] = useState([]);
+  const [model, setModel] = useState(false);
+  const [isOpen, setIsOpen] = useState(true)
 
   // Feacting the api
 
@@ -61,6 +63,21 @@ function ContextProvider({ children }) {
     locationWoeidWeather();
   }, [locationWoeid]);
 
+
+
+
+
+  function handleClick() {
+    setModel(!model)
+    console.log(model)
+  }
+
+
+  function CloseSearch() {
+    setIsOpen(!isOpen)
+    console.log(isOpen)
+  }
+
   return (
     <Context.Provider
       value={{
@@ -70,6 +87,12 @@ function ContextProvider({ children }) {
         setWeather,
         locationWoeid,
         setLocationWoeid,
+        model,
+        setModel,
+        handleClick,
+        isOpen,
+        setIsOpen,
+        CloseSearch,
       }}
     >
       {children}

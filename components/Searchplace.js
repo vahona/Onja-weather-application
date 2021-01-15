@@ -24,6 +24,12 @@ function Searchplace() {
     setWeather,
     locationWoeid,
     setLocationWoeid,
+    model,
+    setModel,
+    handleClick,
+    isOpen,
+    setIsOpen,
+    CloseSearch,
   } = useContext(Context);
 
   function searchLocation(e) {
@@ -119,12 +125,24 @@ function Searchplace() {
   return (
     <>
       <div>
-        <div> X </div>
-        <form onSubmit={searchLocation}>
-          <label></label>
-          <input type="text" id="location" />
-          <button>Search</button>
-        </form>
+        <button type="button" onClick={handleClick}>
+          Search button
+        </button>
+        {model && (
+          <div>
+            <div>
+              <button type="button" onClick={CloseSearch}>
+                X
+              </button>
+              {isOpen && (
+                <form onSubmit={searchLocation}>
+                  <input type="text" id="location" />
+                  <button>Search</button>
+                </form>
+              )}
+            </div>
+          </div>
+        )}
       </div>
       <Table>
         <div>

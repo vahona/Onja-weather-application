@@ -32282,7 +32282,9 @@ function ContextProvider({
 }) {
   const [location, setLocation] = (0, _react.useState)("london");
   const [locationWoeid, setLocationWoeid] = (0, _react.useState)("44418");
-  const [weather, setWeather] = (0, _react.useState)([]); // Feacting the api
+  const [weather, setWeather] = (0, _react.useState)([]);
+  const [model, setModel] = (0, _react.useState)(false);
+  const [isOpen, setIsOpen] = (0, _react.useState)(true); // Feacting the api
 
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
   const locations = `query=${location}`;
@@ -32328,6 +32330,17 @@ function ContextProvider({
   (0, _react.useEffect)(() => {
     locationWoeidWeather();
   }, [locationWoeid]);
+
+  function handleClick() {
+    setModel(!model);
+    console.log(model);
+  }
+
+  function CloseSearch() {
+    setIsOpen(!isOpen);
+    console.log(isOpen);
+  }
+
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       location,
@@ -32335,7 +32348,13 @@ function ContextProvider({
       weather,
       setWeather,
       locationWoeid,
-      setLocationWoeid
+      setLocationWoeid,
+      model,
+      setModel,
+      handleClick,
+      isOpen,
+      setIsOpen,
+      CloseSearch
     }
   }, children);
 }
@@ -34389,7 +34408,13 @@ function Searchplace() {
     weather,
     setWeather,
     locationWoeid,
-    setLocationWoeid
+    setLocationWoeid,
+    model,
+    setModel,
+    handleClick,
+    isOpen,
+    setIsOpen,
+    CloseSearch
   } = (0, _react.useContext)(_Context.Context);
 
   function searchLocation(e) {
@@ -34421,12 +34446,18 @@ function Searchplace() {
       value: wind.humidity
     }, " ", "70%", " ")), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles"))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure)));
   });
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, " X "), /*#__PURE__*/_react.default.createElement("form", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: handleClick
+  }, "Search button"), model && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    onClick: CloseSearch
+  }, "X"), isOpen && /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
-  }, /*#__PURE__*/_react.default.createElement("label", null), /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"))))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
 }
 
 var _default = Searchplace;
@@ -34521,7 +34552,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59825" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61813" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
