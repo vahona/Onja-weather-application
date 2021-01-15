@@ -34293,7 +34293,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Hightlight = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Container3 = exports.Container1 = exports.Container = void 0;
+exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Hightlight = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34318,10 +34318,17 @@ const Container3 = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
   padding-top: 7rem;
-  height: 100%;
-  position: relative;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  padding-left: 4rem
+  
 `;
 exports.Container3 = Container3;
+const Form = _styledComponents.default.form`
+   padding-left: 0;
+`;
+exports.Form = Form;
 const Container2 = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
@@ -34433,8 +34440,8 @@ const Button = _styledComponents.default.button`
 exports.Button = Button;
 const ButtonClose = _styledComponents.default.button`
     position: absolute;
-    top: 3rem;
-    left: 40%;
+    top: 2px;
+    left: 90%;
     color: gray;
     background-color: transparent;
     border: none;
@@ -34505,18 +34512,18 @@ function Searchplace() {
       value: wind.humidity
     }, " ", "70%", " ")), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles"))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure)));
   });
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.BottomSearch, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.BottomSearch, {
     type: "button",
     onClick: handleClick
   }, "Search for places"), model && /*#__PURE__*/_react.default.createElement(_Style.Container3, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonClose, {
     type: "button",
     onClick: handleClick
-  }, "X"), /*#__PURE__*/_react.default.createElement("form", {
+  }, "X"), /*#__PURE__*/_react.default.createElement(_Style.Form, {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))))), /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, timeToday, " ", locationweather), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation))), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
 }
 
 var _default = Searchplace;

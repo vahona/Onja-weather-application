@@ -18,9 +18,17 @@ export const Container3 = styled.div`
   background-color: #1e213a;
   color: white;
   padding-top: 7rem;
-  height: 100%;
-  position: relative;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  padding-left: 4rem
+  
 `;
+
+export const Form = styled.form`
+   padding-left: 0;
+`
+
 export const Container2 = styled.div`
   background-color: #1e213a;
   color: white;
@@ -131,8 +139,8 @@ export const Button = styled.button`
 
 export const ButtonClose = styled.button`
     position: absolute;
-    top: 3rem;
-    left: 40%;
+    top: 2px;
+    left: 90%;
     color: gray;
     background-color: transparent;
     border: none;

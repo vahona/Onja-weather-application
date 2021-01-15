@@ -20,6 +20,7 @@ import {
   Input,
   Button,
   ButtonClose,
+  Form
   
 } from "../Style";
 
@@ -34,6 +35,7 @@ function Searchplace() {
     isloadding,
     setIsloading,
     Loading,
+    
   } = useContext(Context);
 
 
@@ -133,29 +135,35 @@ function Searchplace() {
 
   return (
     <>
-      <div>
-        <BottomSearch type="button" onClick={handleClick}>
-          Search for places
-        </BottomSearch>
-        {model && (
-          <Container3>
-            <div>
-              <ButtonClose type="button" onClick={handleClick}>
-                X
-              </ButtonClose>
-                <form onSubmit={searchLocation}>
-                  <Input type="text" id="location" />
-                  <Button>Search</Button>
-                </form>
-            </div>
-          </Container3>
-        )}
-      </div>
       <Table>
         <div>
-          {timeToday} {locationweather}
+          <div>
+            <BottomSearch type="button" onClick={handleClick}>
+              Search for places
+            </BottomSearch>
+            {model && (
+              <Container3>
+                <div>
+                  <ButtonClose type="button" onClick={handleClick}>
+                    X
+                  </ButtonClose>
+                  <Form onSubmit={searchLocation}>
+                    <Input type="text" id="location" />
+                    <Button>Search</Button>
+                  </Form>
+                </div>
+                <div></div>
+              </Container3>
+            )}
+          </div>
+          <div>{timeToday}</div>
         </div>
-        <Tablegrid>{TypeLocation}</Tablegrid>
+        <div>
+          <div>
+            <div>{locationweather}</div>
+          </div>
+          <Tablegrid>{TypeLocation}</Tablegrid>
+        </div>
       </Table>
       <Hightlight>
         <h2> Today's Hightlight </h2>
