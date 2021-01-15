@@ -20,34 +20,35 @@ import {
   Input,
   Button,
   ButtonClose,
+  
 } from "../Style";
 
 function Searchplace() {
   const {
-    location,
     setLocation,
     weather,
-    setWeather,
-    locationWoeid,
-    setLocationWoeid,
     model,
-    setModel,
     handleClick,
     isOpen,
-    setIsOpen,
     CloseSearch,
+    isloadding,
+    setIsloading,
+    Loading,
   } = useContext(Context);
+
+
 
   function searchLocation(e) {
     e.preventDefault();
     setLocation(e.target.location.value);
   }
 
+
+
   const TypeLocation = weather.slice(1).map((local) => {
-      // const abbr = weather;
-      // const abbreviation = `
+
     return (
-      <div>
+      <div key={local.id}>
         <Container>
           <div>{local.weather_state_name}</div>
           <img
@@ -69,26 +70,30 @@ function Searchplace() {
     );
   });
 
+
   const locationweather = weather.map((locationtitle) => {
     return (
       <>
-        
-        <div>{locationtitle.title}</div>
+        <div key={locationtitle.id}>{locationtitle.title}</div>
       </>
     );
   });
 
+
   const timeToday = weather.slice(0, 1).map((today) => {
 
     return (
-      <Container1>
+      <Container1 key={today.id}>
         <img
           src={`https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`}
         />
-      <TodayDegree>
-            {Math.round(today.max_temp)}
-            <sup>ºC</sup>
+        <TodayDegree>
+          {Math.round(today.max_temp)}
+          <sup>ºC</sup>
         </TodayDegree>
+        <div>{today.weather_state_name}</div>
+        <div>Today: {Date.now()}</div>
+        
       </Container1>
     );
   });
@@ -96,7 +101,7 @@ function Searchplace() {
 
   const windWeahter = weather.slice(0, 1).map((wind) => {
     return (
-      <div>
+      <div key={wind.id}>
         <Container2>
           <h3>Wind status</h3>
           <Speed>
@@ -106,8 +111,6 @@ function Searchplace() {
         <Container2>
           <h3>Humidity</h3>
           <div>{wind.humidity}%</div>
-          <label for="file">File progress:</label>
-
           <progress id="file" max="100" value={wind.humidity}>
             {" "}
             70%{" "}
@@ -137,15 +140,13 @@ function Searchplace() {
         {model && (
           <Container3>
             <div>
-              <ButtonClose type="button" onClick={CloseSearch}>
+              <ButtonClose type="button" onClick={handleClick}>
                 X
               </ButtonClose>
-              {isOpen && (
                 <form onSubmit={searchLocation}>
                   <Input type="text" id="location" />
                   <Button>Search</Button>
                 </form>
-              )}
             </div>
           </Container3>
         )}

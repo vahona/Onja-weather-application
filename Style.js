@@ -19,7 +19,7 @@ export const Container3 = styled.div`
   color: white;
   padding-top: 7rem;
   height: 100%;
-  z-index: 2
+  position: relative;
 `;
 export const Container2 = styled.div`
   background-color: #1e213a;
@@ -28,6 +28,7 @@ export const Container2 = styled.div`
   padding-right: 10%;
   margin-bottom: 2rem;
   margin: 1rem;
+  width: 40%
 `;
 
 export const Body = styled.div`
@@ -102,16 +103,16 @@ export const Visibility = styled.div`
 `;
 
 export const SubSpeed = styled.sub`
-  font-weight: bold;
-  font-size: 50px;
-  line-height: 75px;
+ 
+  font-size: 30px;
+  line-height: 65px;
   color: #e7e7eb;
 `;
 
 export const SubVisibility = styled.sub`
-  font-weight: bold;
-  font-size: 50px;
-  line-height: 75px;
+ 
+  font-size: 30px;
+  line-height: 65px;
   text-align: center;
   color: #e7e7eb;
 `;
@@ -131,9 +132,13 @@ export const Button = styled.button`
 export const ButtonClose = styled.button`
     position: absolute;
     top: 3rem;
-    left: 20%;
+    left: 40%;
     color: gray;
     background-color: transparent;
     border: none;
     font-size: 32px
 `;
+
+
+
+  

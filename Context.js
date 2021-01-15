@@ -8,7 +8,8 @@ function ContextProvider({ children }) {
   const [locationWoeid, setLocationWoeid] = useState("44418");
   const [weather, setWeather] = useState([]);
   const [model, setModel] = useState(false);
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(true);
+  const [isloadding, setIsloading] = useState(true)
 
   // Feacting the api
 
@@ -65,8 +66,6 @@ function ContextProvider({ children }) {
 
 
 
-
-
   function handleClick() {
     setModel(!model)
     console.log(model)
@@ -76,6 +75,10 @@ function ContextProvider({ children }) {
   function CloseSearch() {
     setIsOpen(!isOpen)
     console.log(isOpen)
+  }
+
+  function Loading(){
+    setIsloading(!isloadding)
   }
 
   return (
@@ -93,6 +96,9 @@ function ContextProvider({ children }) {
         isOpen,
         setIsOpen,
         CloseSearch,
+        isloadding,
+        setIsloading,
+        Loading,
       }}
     >
       {children}

@@ -32284,7 +32284,8 @@ function ContextProvider({
   const [locationWoeid, setLocationWoeid] = (0, _react.useState)("44418");
   const [weather, setWeather] = (0, _react.useState)([]);
   const [model, setModel] = (0, _react.useState)(false);
-  const [isOpen, setIsOpen] = (0, _react.useState)(true); // Feacting the api
+  const [isOpen, setIsOpen] = (0, _react.useState)(true);
+  const [isloadding, setIsloading] = (0, _react.useState)(true); // Feacting the api
 
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
   const locations = `query=${location}`;
@@ -32341,6 +32342,10 @@ function ContextProvider({
     console.log(isOpen);
   }
 
+  function Loading() {
+    setIsloading(!isloadding);
+  }
+
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       location,
@@ -32354,7 +32359,10 @@ function ContextProvider({
       handleClick,
       isOpen,
       setIsOpen,
-      CloseSearch
+      CloseSearch,
+      isloadding,
+      setIsloading,
+      Loading
     }
   }, children);
 }
@@ -34311,7 +34319,7 @@ const Container3 = _styledComponents.default.div`
   color: white;
   padding-top: 7rem;
   height: 100%;
-  z-index: 2
+  position: relative;
 `;
 exports.Container3 = Container3;
 const Container2 = _styledComponents.default.div`
@@ -34321,6 +34329,7 @@ const Container2 = _styledComponents.default.div`
   padding-right: 10%;
   margin-bottom: 2rem;
   margin: 1rem;
+  width: 40%
 `;
 exports.Container2 = Container2;
 const Body = _styledComponents.default.div`
@@ -34395,16 +34404,16 @@ const Visibility = _styledComponents.default.div`
 `;
 exports.Visibility = Visibility;
 const SubSpeed = _styledComponents.default.sub`
-  font-weight: bold;
-  font-size: 50px;
-  line-height: 75px;
+ 
+  font-size: 30px;
+  line-height: 65px;
   color: #e7e7eb;
 `;
 exports.SubSpeed = SubSpeed;
 const SubVisibility = _styledComponents.default.sub`
-  font-weight: bold;
-  font-size: 50px;
-  line-height: 75px;
+ 
+  font-size: 30px;
+  line-height: 65px;
   text-align: center;
   color: #e7e7eb;
 `;
@@ -34425,7 +34434,7 @@ exports.Button = Button;
 const ButtonClose = _styledComponents.default.button`
     position: absolute;
     top: 3rem;
-    left: 20%;
+    left: 40%;
     color: gray;
     background-color: transparent;
     border: none;
@@ -34452,18 +34461,15 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function Searchplace() {
   const {
-    location,
     setLocation,
     weather,
-    setWeather,
-    locationWoeid,
-    setLocationWoeid,
     model,
-    setModel,
     handleClick,
     isOpen,
-    setIsOpen,
-    CloseSearch
+    CloseSearch,
+    isloadding,
+    setIsloading,
+    Loading
   } = (0, _react.useContext)(_Context.Context);
 
   function searchLocation(e) {
@@ -34472,24 +34478,28 @@ function Searchplace() {
   }
 
   const TypeLocation = weather.slice(1).map(local => {
-    // const abbr = weather;
-    // const abbreviation = `
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("img", {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: local.id
+    }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
     }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
   const locationweather = weather.map(locationtitle => {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, locationtitle.title));
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+      key: locationtitle.id
+    }, locationtitle.title));
   });
   const timeToday = weather.slice(0, 1).map(today => {
-    return /*#__PURE__*/_react.default.createElement(_Style.Container1, null, /*#__PURE__*/_react.default.createElement("img", {
+    return /*#__PURE__*/_react.default.createElement(_Style.Container1, {
+      key: today.id
+    }, /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")));
+    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", Date.now()));
   });
   const windWeahter = weather.slice(0, 1).map(wind => {
-    return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), /*#__PURE__*/_react.default.createElement(_Style.Speed, null, Math.round(wind.wind_speed), " ", /*#__PURE__*/_react.default.createElement(_Style.SubSpeed, null, " mph "))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("label", {
-      for: "file"
-    }, "File progress:"), /*#__PURE__*/_react.default.createElement("progress", {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      key: wind.id
+    }, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), /*#__PURE__*/_react.default.createElement(_Style.Speed, null, Math.round(wind.wind_speed), " ", /*#__PURE__*/_react.default.createElement(_Style.SubSpeed, null, " mph "))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("progress", {
       id: "file",
       max: "100",
       value: wind.humidity
@@ -34500,8 +34510,8 @@ function Searchplace() {
     onClick: handleClick
   }, "Search for places"), model && /*#__PURE__*/_react.default.createElement(_Style.Container3, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonClose, {
     type: "button",
-    onClick: CloseSearch
-  }, "X"), isOpen && /*#__PURE__*/_react.default.createElement("form", {
+    onClick: handleClick
+  }, "X"), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
@@ -34601,7 +34611,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61813" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54474" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
