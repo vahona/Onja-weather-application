@@ -49,7 +49,6 @@ function Searchplace() {
   }
 
 
-
   const TypeLocation = weather.slice(1).map((local) => {
 
     return (
@@ -159,15 +158,17 @@ function Searchplace() {
                   </Form>
                 </div>
                 <div></div>
+                <div>
+                  <div>{locationweather}</div>
+                </div>
               </Container3>
             )}
           </div>
           <div>{timeToday}</div>
         </div>
         <div>
-          <div>
-            <div>{locationweather}</div>
-          </div>
+          <button>ºC</button>
+          <button>ºF</button>
           <Tablegrid>{TypeLocation}</Tablegrid>
         </div>
         <Hightlight>

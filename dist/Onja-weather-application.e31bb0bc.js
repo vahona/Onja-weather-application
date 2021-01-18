@@ -34547,7 +34547,7 @@ function Searchplace() {
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement("div", null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "\xBAC"), /*#__PURE__*/_react.default.createElement("button", null, "\xBAF"), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
 }
 
 var _default = Searchplace;
