@@ -20,7 +20,10 @@ import {
   Input,
   Button,
   ButtonClose,
-  Form
+  Form,
+  TodayHightlight,
+  TodayHightlighttitle,
+  Smallcontainer,
   
 } from "../Style";
 
@@ -103,7 +106,7 @@ function Searchplace() {
 
   const windWeahter = weather.slice(0, 1).map((wind) => {
     return (
-      <div key={wind.id}>
+      <TodayHightlight key={wind.id}>
         <Container2>
           <h3>Wind status</h3>
           <Speed>
@@ -113,23 +116,26 @@ function Searchplace() {
         <Container2>
           <h3>Humidity</h3>
           <div>{wind.humidity}%</div>
-          <progress id="file" max="100" value={wind.humidity}>
-            {" "}
-            70%{" "}
-          </progress>
+          <progress id="file" max="100" value={wind.humidity}></progress>
         </Container2>
-        <Container2>
-          <h3>Visibility</h3>
-          <Visibility>
-            {Math.round(wind.visibility)}
-            <SubVisibility>miles</SubVisibility>
-          </Visibility>
-        </Container2>
-        <Container2>
-          <h3>Air presseur</h3>
-          <div>{wind.air_pressure}</div>
-        </Container2>
-      </div>
+        <Smallcontainer>
+          <Container2>
+            <h3>Visibility</h3>
+            <Visibility>
+              {Math.round(wind.visibility)}
+              <SubVisibility>miles</SubVisibility>
+            </Visibility>
+          </Container2>
+        </Smallcontainer>
+        <Smallcontainer>
+          <Container2>
+            
+              <h3>Air presseur</h3>
+              <div>{wind.air_pressure}</div>
+            
+          </Container2>
+        </Smallcontainer>
+      </TodayHightlight>
     );
   })
 
@@ -164,11 +170,11 @@ function Searchplace() {
           </div>
           <Tablegrid>{TypeLocation}</Tablegrid>
         </div>
+        <Hightlight>
+          <TodayHightlighttitle> Today's Hightlight </TodayHightlighttitle>
+          <div>{windWeahter}</div>
+        </Hightlight>
       </Table>
-      <Hightlight>
-        <h2> Today's Hightlight </h2>
-        <div>{windWeahter}</div>
-      </Hightlight>
     </>
   );
 }

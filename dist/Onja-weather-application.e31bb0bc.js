@@ -34293,7 +34293,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Hightlight = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = void 0;
+exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34311,17 +34311,19 @@ const Container1 = _styledComponents.default.div`
   color: white;
   padding: 4rem;
   padding-top: 7rem;
-  z-index: 0
+  z-index: 0;
+ 
 `;
 exports.Container1 = Container1;
 const Container3 = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
   padding-top: 7rem;
-  height: 80%;
+  height: 110%;
   position: absolute;
   top: 0;
-  padding-left: 4rem
+  padding-left: 4rem;
+  padding-bottom: 0
   
 `;
 exports.Container3 = Container3;
@@ -34332,10 +34334,9 @@ exports.Form = Form;
 const Container2 = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
-  padding: 3rem;
-  padding-right: 10%;
+  padding-left: 2rem;
+  padding-right: 50%;
   margin-bottom: 2rem;
-  margin: 1rem;
   width: 40%
 `;
 exports.Container2 = Container2;
@@ -34362,10 +34363,6 @@ const Table = _styledComponents.default.div`
   grid-template-columns: 350px auto;
 `;
 exports.Table = Table;
-const Hightlight = _styledComponents.default.div`
-  grid-column: 2 / 1;
-`;
-exports.Hightlight = Hightlight;
 const Griddiv = _styledComponents.default.div`
    grid-column: 1
 `;
@@ -34448,6 +34445,33 @@ const ButtonClose = _styledComponents.default.button`
     font-size: 32px
 `;
 exports.ButtonClose = ButtonClose;
+const TodayHightlight = _styledComponents.default.div`
+  @media (min-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+    margin-inline-start: 3rem;
+    grid-gap: 2rem
+  }
+`;
+exports.TodayHightlight = TodayHightlight;
+const TodayHightlighttitle = _styledComponents.default.h2`
+  @media (min-width: 800px) {
+    margin-top: 2rem;
+    margin-inline-start: 3rem;
+  }
+`;
+exports.TodayHightlighttitle = TodayHightlighttitle;
+const Hightlight = _styledComponents.default.div`
+  @media (min-width: 800px) {
+    grid-column: 2;
+    margin-top: -400px;
+  }
+`;
+exports.Hightlight = Hightlight;
+const Smallcontainer = _styledComponents.default.div`
+  margin-top: -4rem
+`;
+exports.Smallcontainer = Smallcontainer;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Searchplace.js":[function(require,module,exports) {
 "use strict";
 
@@ -34504,13 +34528,13 @@ function Searchplace() {
     }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", Date.now()));
   });
   const windWeahter = weather.slice(0, 1).map(wind => {
-    return /*#__PURE__*/_react.default.createElement("div", {
+    return /*#__PURE__*/_react.default.createElement(_Style.TodayHightlight, {
       key: wind.id
     }, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), /*#__PURE__*/_react.default.createElement(_Style.Speed, null, Math.round(wind.wind_speed), " ", /*#__PURE__*/_react.default.createElement(_Style.SubSpeed, null, " mph "))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("progress", {
       id: "file",
       max: "100",
       value: wind.humidity
-    }, " ", "70%", " ")), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles"))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure)));
+    })), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles")))), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure))));
   });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.BottomSearch, {
     type: "button",
@@ -34523,7 +34547,7 @@ function Searchplace() {
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation))), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement("h2", null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null))), /*#__PURE__*/_react.default.createElement("div", null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
 }
 
 var _default = Searchplace;
@@ -34618,7 +34642,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54474" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50592" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

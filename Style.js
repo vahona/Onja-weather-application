@@ -12,16 +12,18 @@ export const Container1 = styled.div`
   color: white;
   padding: 4rem;
   padding-top: 7rem;
-  z-index: 0
+  z-index: 0;
+ 
 `;
 export const Container3 = styled.div`
   background-color: #1e213a;
   color: white;
   padding-top: 7rem;
-  height: 80%;
+  height: 110%;
   position: absolute;
   top: 0;
-  padding-left: 4rem
+  padding-left: 4rem;
+  padding-bottom: 0
   
 `;
 
@@ -32,10 +34,9 @@ export const Form = styled.form`
 export const Container2 = styled.div`
   background-color: #1e213a;
   color: white;
-  padding: 3rem;
-  padding-right: 10%;
+  padding-left: 2rem;
+  padding-right: 50%;
   margin-bottom: 2rem;
-  margin: 1rem;
   width: 40%
 `;
 
@@ -62,9 +63,7 @@ export const Table = styled.div`
   grid-template-columns: 350px auto;
 `;
 
-export const Hightlight = styled.div`
-  grid-column: 2 / 1;
-`;
+
 
 export const Griddiv = styled.div`
    grid-column: 1
@@ -146,6 +145,35 @@ export const ButtonClose = styled.button`
     border: none;
     font-size: 32px
 `;
+
+export const TodayHightlight = styled.div`
+  @media (min-width: 800px) {
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+    margin-inline-start: 3rem;
+    grid-gap: 2rem
+  }
+`;
+
+export const TodayHightlighttitle = styled.h2`
+  @media (min-width: 800px) {
+    margin-top: 2rem;
+    margin-inline-start: 3rem;
+  }
+`;
+
+export const Hightlight = styled.div`
+  @media (min-width: 800px) {
+    grid-column: 2;
+    margin-top: -400px;
+  }
+`;
+
+export const Smallcontainer = styled.div`
+  margin-top: -4rem
+`
+
+
 
 
 
