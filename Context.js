@@ -81,6 +81,10 @@ function ContextProvider({ children }) {
     setIsloading(!isloadding)
   }
 
+  useEffect(() => {
+    setIsloading();
+  }, [isloadding]);
+
   return (
     <Context.Provider
       value={{

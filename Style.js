@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 export const Container = styled.div`
   background-color: #1e213a;
   color: white;
-  padding: 3rem;
+  padding: 1rem;
   
 `;
 export const Container1 = styled.div`
@@ -51,6 +51,7 @@ export const BottomSearch = styled.button`
   border-radius: 5px;
   position: absolute;
   margin: 1rem;
+  cursor: pointer
   
 `;
 
@@ -63,7 +64,9 @@ export const Table = styled.div`
   grid-template-columns: 350px auto;
 `;
 
-
+export const LocationName = styled.div`
+  margin : 2rem
+`
 
 export const Griddiv = styled.div`
    grid-column: 1
@@ -129,11 +132,13 @@ export const Input = styled.input`
   background-color: #1e213a;
   border: 1px solid gray
 `;
+
 export const Button = styled.button`
   padding: 1rem;
   background-color: blue;
   color: white;
   border: 1px solid gray;
+  cursor: pointer;
 `;
 
 export const ButtonClose = styled.button`

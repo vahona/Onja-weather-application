@@ -24,7 +24,7 @@ import {
   TodayHightlight,
   TodayHightlighttitle,
   Smallcontainer,
-  
+  LocationName,
 } from "../Style";
 
 function Searchplace() {
@@ -46,6 +46,7 @@ function Searchplace() {
   function searchLocation(e) {
     e.preventDefault();
     setLocation(e.target.location.value);
+
   }
 
 
@@ -78,7 +79,7 @@ function Searchplace() {
   const locationweather = weather.map((locationtitle) => {
     return (
       <>
-        <div key={locationtitle.id}>{locationtitle.title}</div>
+        <LocationName key={locationtitle.id}>{locationtitle.title}</LocationName>
       </>
     );
   });
@@ -128,15 +129,15 @@ function Searchplace() {
         </Smallcontainer>
         <Smallcontainer>
           <Container2>
-            
-              <h3>Air presseur</h3>
-              <div>{wind.air_pressure}</div>
-            
+              <h3> Air presseur </h3>
+              <div> {wind.air_pressure} </div>
           </Container2>
         </Smallcontainer>
       </TodayHightlight>
     );
   })
+
+
 
   return (
     <>
@@ -146,7 +147,7 @@ function Searchplace() {
             <BottomSearch type="button" onClick={handleClick}>
               Search for places
             </BottomSearch>
-            {model && (
+            { model && (
               <Container3>
                 <div>
                   <ButtonClose type="button" onClick={handleClick}>

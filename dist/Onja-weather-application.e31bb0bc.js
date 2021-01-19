@@ -32346,6 +32346,9 @@ function ContextProvider({
     setIsloading(!isloadding);
   }
 
+  (0, _react.useEffect)(() => {
+    setIsloading();
+  }, [isloadding]);
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       location,
@@ -34293,7 +34296,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = void 0;
+exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34302,7 +34305,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const Container = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
-  padding: 3rem;
+  padding: 1rem;
   
 `;
 exports.Container = Container;
@@ -34351,6 +34354,7 @@ const BottomSearch = _styledComponents.default.button`
   border-radius: 5px;
   position: absolute;
   margin: 1rem;
+  cursor: pointer
   
 `;
 exports.BottomSearch = BottomSearch;
@@ -34363,6 +34367,10 @@ const Table = _styledComponents.default.div`
   grid-template-columns: 350px auto;
 `;
 exports.Table = Table;
+const LocationName = _styledComponents.default.div`
+  margin : 2rem
+`;
+exports.LocationName = LocationName;
 const Griddiv = _styledComponents.default.div`
    grid-column: 1
 `;
@@ -34433,6 +34441,7 @@ const Button = _styledComponents.default.button`
   background-color: blue;
   color: white;
   border: 1px solid gray;
+  cursor: pointer;
 `;
 exports.Button = Button;
 const ButtonClose = _styledComponents.default.button`
@@ -34516,7 +34525,7 @@ function Searchplace() {
     }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
   const locationweather = weather.map(locationtitle => {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.LocationName, {
       key: locationtitle.id
     }, locationtitle.title));
   });
@@ -34534,7 +34543,7 @@ function Searchplace() {
       id: "file",
       max: "100",
       value: wind.humidity
-    })), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles")))), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Air presseur"), /*#__PURE__*/_react.default.createElement("div", null, wind.air_pressure))));
+    })), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles")))), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, " Air presseur "), /*#__PURE__*/_react.default.createElement("div", null, " ", wind.air_pressure, " "))));
   });
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.BottomSearch, {
     type: "button",
@@ -34642,7 +34651,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50592" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54182" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
