@@ -32283,6 +32283,7 @@ function ContextProvider({
   const [location, setLocation] = (0, _react.useState)("london");
   const [locationWoeid, setLocationWoeid] = (0, _react.useState)("44418");
   const [weather, setWeather] = (0, _react.useState)([]);
+  const [weatherDetail, setWeatherDetail] = (0, _react.useState)([]);
   const [model, setModel] = (0, _react.useState)(false);
   const [isOpen, setIsOpen] = (0, _react.useState)(true);
   const [isloadding, setIsloading] = (0, _react.useState)(true); // Feacting the api
@@ -32304,8 +32305,7 @@ function ContextProvider({
     try {
       const responses = await fetch(API_URL2);
       const datas = await responses.json();
-      console.log(datas);
-      setWeather(datas.consolidated_weather);
+      setWeatherDetail(datas.consolidated_weather); // setWeather(datas.consolidated_weather);
     } catch (e) {
       console.error(e);
     }
@@ -32324,6 +32324,7 @@ function ContextProvider({
   (0, _react.useEffect)(() => {
     locationWeather();
   }, [location]);
+  console.log(location, weather);
   (0, _react.useEffect)(() => {
     weather?.map(weather => setLocationWoeid(weather.woeid)); // const cityWoeid = weather?.woeid;
     // setLocationWoeid(cityWoeid);
@@ -32355,6 +32356,8 @@ function ContextProvider({
       setLocation,
       weather,
       setWeather,
+      weatherDetail,
+      setWeatherDetail,
       locationWoeid,
       setLocationWoeid,
       model,
@@ -34296,7 +34299,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = void 0;
+exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.GrayDeg = exports.Degre = exports.Tablegrid = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34367,8 +34370,12 @@ const Table = _styledComponents.default.div`
   grid-template-columns: 350px auto;
 `;
 exports.Table = Table;
-const LocationName = _styledComponents.default.div`
-  margin : 2rem
+const LocationName = _styledComponents.default.button`
+  margin : 2rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer
 `;
 exports.LocationName = LocationName;
 const Griddiv = _styledComponents.default.div`
@@ -34481,6 +34488,12 @@ const Smallcontainer = _styledComponents.default.div`
   margin-top: -4rem
 `;
 exports.Smallcontainer = Smallcontainer;
+const ButtonContainer = _styledComponents.default.div`
+   position: absolute;
+   right: 1rem;
+   top: 0.5rem
+`;
+exports.ButtonContainer = ButtonContainer;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Searchplace.js":[function(require,module,exports) {
 "use strict";
 
@@ -34503,6 +34516,8 @@ function Searchplace() {
   const {
     setLocation,
     weather,
+    weatherDetail,
+    setWeatherDetail,
     model,
     handleClick,
     isOpen,
@@ -34517,26 +34532,33 @@ function Searchplace() {
     setLocation(e.target.location.value);
   }
 
-  const TypeLocation = weather.slice(1).map(local => {
+  function weatherDetailButton(e) {
+    setLocation(e.target.id);
+  }
+
+  const TypeLocation = weatherDetail?.slice(1).map(local => {
     return /*#__PURE__*/_react.default.createElement("div", {
       key: local.id
     }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null, local.weather_state_name), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
     }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
-  const locationweather = weather.map(locationtitle => {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.LocationName, {
-      key: locationtitle.id
-    }, locationtitle.title));
+  const locationweather = weather.map(location => {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.LocationName, {
+      type: "button",
+      id: location.title,
+      onClick: weatherDetailButton,
+      key: location.id
+    }, location.title)));
   });
-  const timeToday = weather.slice(0, 1).map(today => {
+  const timeToday = weatherDetail?.slice(0, 1).map(today => {
     return /*#__PURE__*/_react.default.createElement(_Style.Container1, {
       key: today.id
     }, /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", Date.now()));
+    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", Date.now()), /*#__PURE__*/_react.default.createElement("div", null, weather[0].title));
   });
-  const windWeahter = weather.slice(0, 1).map(wind => {
+  const windWeahter = weatherDetail?.slice(0, 1).map(wind => {
     return /*#__PURE__*/_react.default.createElement(_Style.TodayHightlight, {
       key: wind.id
     }, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Wind status"), /*#__PURE__*/_react.default.createElement(_Style.Speed, null, Math.round(wind.wind_speed), " ", /*#__PURE__*/_react.default.createElement(_Style.SubSpeed, null, " mph "))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement("h3", null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("progress", {
@@ -34556,7 +34578,7 @@ function Searchplace() {
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement("div", null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", null, "\xBAC"), /*#__PURE__*/_react.default.createElement("button", null, "\xBAF"), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement("div", null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement("button", null, "\xBAC"), /*#__PURE__*/_react.default.createElement("button", null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
 }
 
 var _default = Searchplace;
@@ -34651,7 +34673,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54182" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64414" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

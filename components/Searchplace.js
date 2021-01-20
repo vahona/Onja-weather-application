@@ -25,12 +25,15 @@ import {
   TodayHightlighttitle,
   Smallcontainer,
   LocationName,
+  ButtonContainer,
 } from "../Style";
 
 function Searchplace() {
   const {
     setLocation,
     weather,
+    weatherDetail,
+    setWeatherDetail,
     model,
     handleClick,
     isOpen,
@@ -38,7 +41,6 @@ function Searchplace() {
     isloadding,
     setIsloading,
     Loading,
-    
   } = useContext(Context);
 
 
@@ -46,11 +48,13 @@ function Searchplace() {
   function searchLocation(e) {
     e.preventDefault();
     setLocation(e.target.location.value);
-
   }
 
+  function weatherDetailButton(e) {
+    setLocation(e.target.id)
+  }
 
-  const TypeLocation = weather.slice(1).map((local) => {
+  const TypeLocation = weatherDetail?.slice(1).map((local) => {
 
     return (
       <div key={local.id}>
@@ -76,16 +80,25 @@ function Searchplace() {
   });
 
 
-  const locationweather = weather.map((locationtitle) => {
+  const locationweather = weather.map((location) => {
     return (
       <>
-        <LocationName key={locationtitle.id}>{locationtitle.title}</LocationName>
+        <div>
+          <LocationName
+            type="button"
+            id={location.title}
+            onClick={weatherDetailButton}
+            key={location.id}
+          >
+            {location.title}
+          </LocationName>
+        </div>
       </>
     );
   });
 
 
-  const timeToday = weather.slice(0, 1).map((today) => {
+  const timeToday = weatherDetail?.slice(0, 1).map((today) => {
 
     return (
       <Container1 key={today.id}>
@@ -98,13 +111,13 @@ function Searchplace() {
         </TodayDegree>
         <div>{today.weather_state_name}</div>
         <div>Today: {Date.now()}</div>
-        
+        <div>{weather[0].title}</div>
       </Container1>
     );
   });
 
 
-  const windWeahter = weather.slice(0, 1).map((wind) => {
+  const windWeahter = weatherDetail?.slice(0, 1).map((wind) => {
     return (
       <TodayHightlight key={wind.id}>
         <Container2>
@@ -147,7 +160,7 @@ function Searchplace() {
             <BottomSearch type="button" onClick={handleClick}>
               Search for places
             </BottomSearch>
-            { model && (
+            {model && (
               <Container3>
                 <div>
                   <ButtonClose type="button" onClick={handleClick}>
@@ -168,8 +181,10 @@ function Searchplace() {
           <div>{timeToday}</div>
         </div>
         <div>
-          <button>ºC</button>
-          <button>ºF</button>
+          <ButtonContainer>
+            <button>ºC</button>
+            <button>ºF</button>
+          </ButtonContainer>
           <Tablegrid>{TypeLocation}</Tablegrid>
         </div>
         <Hightlight>

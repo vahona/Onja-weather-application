@@ -7,6 +7,8 @@ function ContextProvider({ children }) {
   const [location, setLocation] = useState("london");
   const [locationWoeid, setLocationWoeid] = useState("44418");
   const [weather, setWeather] = useState([]);
+  const [weatherDetail, setWeatherDetail] = useState([]);
+
   const [model, setModel] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [isloadding, setIsloading] = useState(true)
@@ -31,13 +33,15 @@ function ContextProvider({ children }) {
   const locationWoeidWeather = async () => {
     try {
       const responses = await fetch(API_URL2);
-      const datas = await responses.json();
-      console.log(datas);
-      setWeather(datas.consolidated_weather);
+      const datas = await responses.json(); 
+      setWeatherDetail(datas.consolidated_weather);
+      // setWeather(datas.consolidated_weather);
     } catch (e) {
       console.error(e);
     }
   };
+
+ 
 
   const locationWeather = async () => {
     try {
@@ -52,6 +56,8 @@ function ContextProvider({ children }) {
   useEffect(() => {
     locationWeather();
   }, [location]);
+
+  console.log(location, weather)
 
   useEffect(() => {
     weather?.map((weather) => setLocationWoeid(weather.woeid));
@@ -92,6 +98,8 @@ function ContextProvider({ children }) {
         setLocation,
         weather,
         setWeather,
+        weatherDetail,
+        setWeatherDetail,
         locationWoeid,
         setLocationWoeid,
         model,

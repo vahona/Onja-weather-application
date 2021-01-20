@@ -64,8 +64,12 @@ export const Table = styled.div`
   grid-template-columns: 350px auto;
 `;
 
-export const LocationName = styled.div`
-  margin : 2rem
+export const LocationName = styled.button`
+  margin : 2rem;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer
 `
 
 export const Griddiv = styled.div`
@@ -176,6 +180,12 @@ export const Hightlight = styled.div`
 
 export const Smallcontainer = styled.div`
   margin-top: -4rem
+`
+
+export const ButtonContainer = styled.div`
+   position: absolute;
+   right: 1rem;
+   top: 0.5rem
 `
 
 
