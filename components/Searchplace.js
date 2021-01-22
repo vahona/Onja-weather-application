@@ -26,6 +26,13 @@ import {
   Smallcontainer,
   LocationName,
   ButtonContainer,
+  SubHeader,
+  Airpress,
+  ContainerToday,
+  ImageToday,
+  Today,
+  Locatio,
+  ImageNextDay,
 } from "../Style";
 
 function Searchplace() {
@@ -59,8 +66,8 @@ function Searchplace() {
     return (
       <div key={local.id}>
         <Container>
-          <div>{local.weather_state_name}</div>
-          <img
+          {/* <div>{local.weather_state_name}</div> */}
+          <ImageNextDay
             src={`https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`}
           />
           <div>{local.wind_direction_compass}</div>
@@ -101,8 +108,8 @@ function Searchplace() {
   const timeToday = weatherDetail?.slice(0, 1).map((today) => {
 
     return (
-      <Container1 key={today.id}>
-        <img
+      <Today key={today.id}>
+        <ImageToday
           src={`https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`}
         />
         <TodayDegree>
@@ -111,8 +118,8 @@ function Searchplace() {
         </TodayDegree>
         <div>{today.weather_state_name}</div>
         <div>Today: {Date.now()}</div>
-        <div>{weather[0].title}</div>
-      </Container1>
+        <Locatio>{weather[0].title}</Locatio>
+      </Today>
     );
   });
 
@@ -121,19 +128,19 @@ function Searchplace() {
     return (
       <TodayHightlight key={wind.id}>
         <Container2>
-          <h3>Wind status</h3>
+          <SubHeader>Wind status</SubHeader>
           <Speed>
             {Math.round(wind.wind_speed)} <SubSpeed> mph </SubSpeed>
           </Speed>
         </Container2>
         <Container2>
-          <h3>Humidity</h3>
+          <SubHeader>Humidity</SubHeader>
           <div>{wind.humidity}%</div>
           <progress id="file" max="100" value={wind.humidity}></progress>
         </Container2>
         <Smallcontainer>
           <Container2>
-            <h3>Visibility</h3>
+            <SubHeader>Visibility</SubHeader>
             <Visibility>
               {Math.round(wind.visibility)}
               <SubVisibility>miles</SubVisibility>
@@ -142,8 +149,8 @@ function Searchplace() {
         </Smallcontainer>
         <Smallcontainer>
           <Container2>
-              <h3> Air presseur </h3>
-              <div> {wind.air_pressure} </div>
+              <SubHeader> Air presseur </SubHeader>
+              <Airpress > {wind.air_pressure} <sub>mb</sub> </Airpress>
           </Container2>
         </Smallcontainer>
       </TodayHightlight>
@@ -178,7 +185,7 @@ function Searchplace() {
               </Container3>
             )}
           </div>
-          <div>{timeToday}</div>
+          <ContainerToday>{timeToday}</ContainerToday>
         </div>
         <div>
           <ButtonContainer>

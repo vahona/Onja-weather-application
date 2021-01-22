@@ -1,18 +1,34 @@
 import styled from 'styled-components'
 import Styled from 'styled-components'
 
-export const Container = styled.div`
+export const ContainerToday = styled.div`
   background-color: #1e213a;
   color: white;
   padding: 1rem;
+  @media (min-width: 800px) {
+  padding-bottom: 10rem;
+  }
   
 `;
+
+export const Today = styled.div`
+  margin-inline-start: 2rem;
+`;
+
+export const Container = styled.div`
+  background-color: #1e213a;
+  color: white;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  
+`;
+
 export const Container1 = styled.div`
   background-color: #1e213a;
   color: white;
   padding: 4rem;
   padding-top: 7rem;
-  z-index: 0;
+ 
  
 `;
 export const Container3 = styled.div`
@@ -44,6 +60,10 @@ export const Body = styled.div`
   color: white
 `;
 
+export const Locatio = styled.div`
+  padding-bottom: 3rem
+`
+
 export const BottomSearch = styled.button`
   background-color: gray;
   padding: 1rem;
@@ -65,24 +85,31 @@ export const Table = styled.div`
 `;
 
 export const LocationName = styled.button`
-  margin : 2rem;
+  margin: 2rem;
   background-color: transparent;
   color: white;
   border: none;
-  cursor: pointer
-`
+  cursor: pointer;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+`;
 
 export const Griddiv = styled.div`
    grid-column: 1
 `
 
-export const Tablegrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  margin: 2rem;
-  grid-gap: 1rem;
-  
+export const SubHeader = styled.h3`
+  padding: 1rem;
 `;
+
+export const Airpress = styled.div`
+  padding: 1rem;
+  padding-bottom: 3.5rem
+`;
+
+
 
 export const Degre = styled.div`
   display: flex;
@@ -93,6 +120,18 @@ export const GrayDeg = styled.div`
   color: gray
 
 `
+
+export const ImageToday = styled.img`
+  width: 50%;
+  margin-top: 4rem;
+  
+
+`
+
+export const ImageNextDay = styled.img`
+  margin-top: 5rem;
+  width: 70%;
+`;
 
 export const TodayDegree = styled.div`
   font-style: normal;
@@ -162,7 +201,19 @@ export const TodayHightlight = styled.div`
     margin-inline-start: 3rem;
     grid-gap: 2rem
   }
+
+ 
 `;
+
+ export const Tablegrid = styled.div`
+
+ @media (min-width: 800px) {
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   margin: 2rem;
+   grid-gap: 1rem;
+ }
+ `;
 
 export const TodayHightlighttitle = styled.h2`
   @media (min-width: 800px) {
@@ -171,7 +222,10 @@ export const TodayHightlighttitle = styled.h2`
   }
 `;
 
+
+
 export const Hightlight = styled.div`
+margin-top: 4rem;
   @media (min-width: 800px) {
     grid-column: 2;
     margin-top: -400px;
