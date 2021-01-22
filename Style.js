@@ -129,7 +129,7 @@ export const ImageToday = styled.img`
 `
 
 export const ImageNextDay = styled.img`
-  margin-top: 5rem;
+  margin-top: 1rem;
   width: 70%;
 `;
 

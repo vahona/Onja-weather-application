@@ -34432,7 +34432,7 @@ const ImageToday = _styledComponents.default.img`
 `;
 exports.ImageToday = ImageToday;
 const ImageNextDay = _styledComponents.default.img`
-  margin-top: 5rem;
+  margin-top: 1rem;
   width: 70%;
 `;
 exports.ImageNextDay = ImageNextDay;
@@ -34586,9 +34586,12 @@ function Searchplace() {
   }
 
   const TypeLocation = weatherDetail?.slice(1).map(local => {
+    const todays = new Date();
+    const tomorow = new Date(todays);
+    tomorow.setDate(tomorow.getDate() + 1);
     return /*#__PURE__*/_react.default.createElement("div", {
       key: local.id
-    }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement(_Style.ImageNextDay, {
+    }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement(_Style.ImageNextDay, {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
     }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });

@@ -62,11 +62,13 @@ function Searchplace() {
   }
 
   const TypeLocation = weatherDetail?.slice(1).map((local) => {
-
+         const todays = new Date();
+         const tomorow = new Date(todays  )
+         tomorow.setDate(tomorow.getDate() + 1)
     return (
       <div key={local.id}>
         <Container>
-          {/* <div>{local.weather_state_name}</div> */}
+          <div></div>
           <ImageNextDay
             src={`https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`}
           />
@@ -106,6 +108,7 @@ function Searchplace() {
 
 
   const timeToday = weatherDetail?.slice(0, 1).map((today) => {
+
 
     return (
       <Today key={today.id}>
