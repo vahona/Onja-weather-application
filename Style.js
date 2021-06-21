@@ -205,7 +205,7 @@ export const TodayHightlight = styled.div`
  
 `;
 
- export const Tablegrid = styled.div`
+export const Tablegrid = styled.div`
 
  @media (min-width: 800px) {
    display: grid;
@@ -242,8 +242,13 @@ export const ButtonContainer = styled.div`
    top: 0.5rem
 `
 
+export const ButtonDegree = styled.button`
+  border-radius: 50%;
+  height: 50px;
+  width: 50px; 
+`
 
 
 
 
-  
+

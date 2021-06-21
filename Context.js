@@ -28,12 +28,12 @@ function ContextProvider({ children }) {
   if (locationWoeid !== "") {
     API_URL2 = API_URL2 + woeidLocation;
   }
-  
+
 
   const locationWoeidWeather = async () => {
     try {
       const responses = await fetch(API_URL2);
-      const datas = await responses.json(); 
+      const datas = await responses.json();
       setWeatherDetail(datas.consolidated_weather);
       // setWeather(datas.consolidated_weather);
     } catch (e) {
@@ -41,7 +41,7 @@ function ContextProvider({ children }) {
     }
   };
 
- 
+
 
   const locationWeather = async () => {
     try {
@@ -64,7 +64,7 @@ function ContextProvider({ children }) {
     // const cityWoeid = weather?.woeid;
     // setLocationWoeid(cityWoeid);
   }, [weather]);
- 
+
 
   useEffect(() => {
     locationWoeidWeather();
@@ -83,7 +83,7 @@ function ContextProvider({ children }) {
     console.log(isOpen)
   }
 
-  function Loading(){
+  function Loading() {
     setIsloading(!isloadding)
   }
 

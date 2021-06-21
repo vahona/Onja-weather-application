@@ -33,6 +33,7 @@ import {
   Today,
   Locatio,
   ImageNextDay,
+  ButtonDegree,
 } from "../Style";
 
 function Searchplace() {
@@ -62,9 +63,9 @@ function Searchplace() {
   }
 
   const TypeLocation = weatherDetail?.slice(1).map((local) => {
-         const todays = new Date();
-         const tomorow = new Date(todays  )
-         tomorow.setDate(tomorow.getDate() + 1)
+    const todays = new Date();
+    const tomorow = new Date(todays)
+    tomorow.setDate(tomorow.getDate() + 1)
     return (
       <div key={local.id}>
         <Container>
@@ -92,7 +93,7 @@ function Searchplace() {
   const locationweather = weather.map((location) => {
     return (
       <>
-        <div>
+        <div key={location.id}>
           <LocationName
             type="button"
             id={location.title}
@@ -152,8 +153,8 @@ function Searchplace() {
         </Smallcontainer>
         <Smallcontainer>
           <Container2>
-              <SubHeader> Air presseur </SubHeader>
-              <Airpress > {wind.air_pressure} <sub>mb</sub> </Airpress>
+            <SubHeader> Air presseur </SubHeader>
+            <Airpress > {wind.air_pressure} <sub>mb</sub> </Airpress>
           </Container2>
         </Smallcontainer>
       </TodayHightlight>
@@ -192,8 +193,8 @@ function Searchplace() {
         </div>
         <div>
           <ButtonContainer>
-            <button>ºC</button>
-            <button>ºF</button>
+            <ButtonDegree>ºC</ButtonDegree>
+            <ButtonDegree>ºF</ButtonDegree>
           </ButtonContainer>
           <Tablegrid>{TypeLocation}</Tablegrid>
         </div>

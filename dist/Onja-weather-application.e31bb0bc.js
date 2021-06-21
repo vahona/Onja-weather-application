@@ -28285,7 +28285,23 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _setPrototypeOf;
+
+function _setPrototypeOf(o, p) {
+  exports.default = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+},{}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28293,12 +28309,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = _inheritsLoose;
 
+var _setPrototypeOf = _interopRequireDefault(require("./setPrototypeOf.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
+  (0, _setPrototypeOf.default)(subClass, superClass);
 }
-},{}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
+},{"./setPrototypeOf.js":"node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js"}],"node_modules/react-is/cjs/react-is.development.js":[function(require,module,exports) {
 /** @license React v16.13.1
  * react-is.development.js
  *
@@ -30314,9 +30334,9 @@ var _tinyWarning = _interopRequireDefault(require("tiny-warning"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var MAX_SIGNED_31_BIT_INT = 1073741823;
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : {};
@@ -30489,7 +30509,7 @@ function createReactContext(defaultValue, calculateChangedBits) {
 var index = _react.default.createContext || createReactContext;
 var _default = index;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"node_modules/isarray/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js"}],"node_modules/path-to-regexp/node_modules/isarray/index.js":[function(require,module,exports) {
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
@@ -30922,7 +30942,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
-},{"isarray":"node_modules/isarray/index.js"}],"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
+},{"isarray":"node_modules/path-to-regexp/node_modules/isarray/index.js"}],"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32269,9 +32289,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 const Context = _react.default.createContext();
 
@@ -32326,7 +32346,7 @@ function ContextProvider({
   }, [location]);
   console.log(location, weather);
   (0, _react.useEffect)(() => {
-    weather?.map(weather => setLocationWoeid(weather.woeid)); // const cityWoeid = weather?.woeid;
+    weather === null || weather === void 0 ? void 0 : weather.map(weather => setLocationWoeid(weather.woeid)); // const cityWoeid = weather?.woeid;
     // setLocationWoeid(cityWoeid);
   }, [weather]);
   (0, _react.useEffect)(() => {
@@ -33143,7 +33163,7 @@ var index = (0, _memoize.default)(function (prop) {
 );
 var _default = index;
 exports.default = _default;
-},{"@emotion/memoize":"node_modules/@emotion/memoize/dist/memoize.browser.esm.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js":[function(require,module,exports) {
+},{"@emotion/memoize":"node_modules/@emotion/memoize/dist/memoize.browser.esm.js"}],"node_modules/process/browser.js":[function(require,module,exports) {
 
 // shim for using process in browser
 var process = module.exports = {}; // cached from whatever global is present so that test runners that stub it
@@ -33383,9 +33403,9 @@ var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-stat
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function v() {
   return (v = Object.assign || function (e) {
@@ -33423,7 +33443,7 @@ function N(e) {
 }
 
 var A = "undefined" != typeof process && (undefined || undefined) || "data-styled",
-    C = "5.2.1",
+    C = "5.3.0",
     I = "undefined" != typeof window && "HTMLElement" in window,
     P = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== undefined && "" !== undefined ? "false" !== undefined && undefined : "undefined" != typeof process && void 0 !== undefined && "" !== undefined ? "false" !== undefined && undefined : "production" !== "development"),
     O = {},
@@ -33478,10 +33498,10 @@ var T = function () {
 
       this.groupSizes = new Uint32Array(o), this.groupSizes.set(n), this.length = o;
 
-      for (var s = r; s < o; s++) this.groupSizes[s] = 0;
+      for (var i = r; i < o; i++) this.groupSizes[i] = 0;
     }
 
-    for (var i = this.indexOfGroup(e + 1), a = 0, c = t.length; a < c; a++) this.tag.insertRule(i, t[a]) && (this.groupSizes[e]++, i++);
+    for (var s = this.indexOfGroup(e + 1), a = 0, c = t.length; a < c; a++) this.tag.insertRule(s, t[a]) && (this.groupSizes[e]++, s++);
   }, t.clearGroup = function (e) {
     if (e < this.length) {
       var t = this.groupSizes[e],
@@ -33495,7 +33515,7 @@ var T = function () {
     var t = "";
     if (e >= this.length || 0 === this.groupSizes[e]) return t;
 
-    for (var n = this.groupSizes[e], r = this.indexOfGroup(e), o = r + n, s = r; s < o; s++) t += this.tag.getRule(s) + "/*!sc*/\n";
+    for (var n = this.groupSizes[e], r = this.indexOfGroup(e), o = r + n, i = r; i < o; i++) t += this.tag.getRule(i) + "/*!sc*/\n";
 
     return t;
   }, e;
@@ -33517,28 +33537,28 @@ var T = function () {
     z = function (e, t) {
   k.set(e, t), x.set(t, e);
 },
-    L = "style[" + A + '][data-styled-version="5.2.1"]',
+    L = "style[" + A + '][data-styled-version="5.3.0"]',
     G = new RegExp("^" + A + '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),
     F = function (e, t, n) {
-  for (var r, o = n.split(","), s = 0, i = o.length; s < i; s++) (r = o[s]) && e.registerName(t, r);
+  for (var r, o = n.split(","), i = 0, s = o.length; i < s; i++) (r = o[i]) && e.registerName(t, r);
 },
     Y = function (e, t) {
-  for (var n = t.innerHTML.split("/*!sc*/\n"), r = [], o = 0, s = n.length; o < s; o++) {
-    var i = n[o].trim();
+  for (var n = t.innerHTML.split("/*!sc*/\n"), r = [], o = 0, i = n.length; o < i; o++) {
+    var s = n[o].trim();
 
-    if (i) {
-      var a = i.match(G);
+    if (s) {
+      var a = s.match(G);
 
       if (a) {
         var c = 0 | parseInt(a[1], 10),
             u = a[2];
         0 !== c && (z(u, c), F(e, u, a[3]), e.getTag().insertRules(c, r)), r.length = 0;
-      } else r.push(i);
+      } else r.push(s);
     }
   }
 },
     q = function () {
-  return "undefined" != typeof __webpack_nonce__ ? __webpack_nonce__ : null;
+  return "undefined" != typeof window && void 0 !== window.__webpack_nonce__ ? window.__webpack_nonce__ : null;
 },
     H = function (e) {
   var t = document.head,
@@ -33550,11 +33570,11 @@ var T = function () {
       if (r && 1 === r.nodeType && r.hasAttribute(A)) return r;
     }
   }(n),
-      s = void 0 !== o ? o.nextSibling : null;
+      i = void 0 !== o ? o.nextSibling : null;
 
-  r.setAttribute(A, "active"), r.setAttribute("data-styled-version", "5.2.1");
-  var i = q();
-  return i && r.setAttribute("nonce", i), n.insertBefore(r, s), r;
+  r.setAttribute(A, "active"), r.setAttribute("data-styled-version", "5.3.0");
+  var s = q();
+  return s && r.setAttribute("nonce", s), n.insertBefore(r, i), r;
 },
     $ = function () {
   function e(e) {
@@ -33665,16 +33685,16 @@ var T = function () {
   }, t.toString = function () {
     return function (e) {
       for (var t = e.getTag(), n = t.length, r = "", o = 0; o < n; o++) {
-        var s = M(o);
+        var i = M(o);
 
-        if (void 0 !== s) {
-          var i = e.names.get(s),
+        if (void 0 !== i) {
+          var s = e.names.get(i),
               a = t.getGroup(o);
 
-          if (void 0 !== i && 0 !== a.length) {
-            var c = A + ".g" + o + '[id="' + s + '"]',
+          if (void 0 !== s && 0 !== a.length) {
+            var c = A + ".g" + o + '[id="' + i + '"]',
                 u = "";
-            void 0 !== i && i.forEach(function (e) {
+            void 0 !== s && s.forEach(function (e) {
               e.length > 0 && (u += e + ",");
             }), r += "" + a + c + '{content:"' + u + '"}/*!sc*/\n';
           }
@@ -33717,8 +33737,8 @@ function re(e) {
   return !0;
 }
 
-var oe = ne("5.2.1"),
-    se = function () {
+var oe = ne("5.3.0"),
+    ie = function () {
   function e(e, t, n) {
     this.rules = e, this.staticRulesId = "", this.isStatic = "production" === "development" && (void 0 === n || n.isStatic) && re(e), this.componentId = t, this.baseHash = te(oe, t), this.baseStyle = n, Z.registerId(t);
   }
@@ -33728,15 +33748,15 @@ var oe = ne("5.2.1"),
         o = [];
     if (this.baseStyle && o.push(this.baseStyle.generateAndInjectStyles(e, t, n)), this.isStatic && !n.hash) {
       if (this.staticRulesId && t.hasNameForId(r, this.staticRulesId)) o.push(this.staticRulesId);else {
-        var s = Ne(this.rules, e, t, n).join(""),
-            i = ee(te(this.baseHash, s.length) >>> 0);
+        var i = Ne(this.rules, e, t, n).join(""),
+            s = ee(te(this.baseHash, i.length) >>> 0);
 
-        if (!t.hasNameForId(r, i)) {
-          var a = n(s, "." + i, void 0, r);
-          t.insertRules(r, i, a);
+        if (!t.hasNameForId(r, s)) {
+          var a = n(i, "." + s, void 0, r);
+          t.insertRules(r, s, a);
         }
 
-        o.push(i), this.staticRulesId = i;
+        o.push(s), this.staticRulesId = s;
       }
     } else {
       for (var c = this.rules.length, u = te(this.baseHash, n.hash), l = "", d = 0; d < c; d++) {
@@ -33762,7 +33782,7 @@ var oe = ne("5.2.1"),
     return o.join(" ");
   }, e;
 }(),
-    ie = /^\s*\/\/.*$/gm,
+    se = /^\s*\/\/.*$/gm,
     ae = [":", "[", ".", "#"];
 
 function ce(e) {
@@ -33770,10 +33790,10 @@ function ce(e) {
       n,
       r,
       o,
-      s = void 0 === e ? E : e,
-      i = s.options,
-      a = void 0 === i ? E : i,
-      c = s.plugins,
+      i = void 0 === e ? E : e,
+      s = i.options,
+      a = void 0 === s ? E : s,
+      c = i.plugins,
       u = void 0 === c ? w : c,
       l = new _stylis.default(a),
       d = [],
@@ -33784,7 +33804,7 @@ function ce(e) {
       } catch (e) {}
     }
 
-    return function (n, r, o, s, i, a, c, u, l, d) {
+    return function (n, r, o, i, s, a, c, u, l, d) {
       switch (n) {
         case 1:
           if (0 === l && 64 === r.charCodeAt(0)) return e(r + ";"), "";
@@ -33811,15 +33831,15 @@ function ce(e) {
   }(function (e) {
     d.push(e);
   }),
-      f = function (e, r, s) {
-    return 0 === r && ae.includes(s[n.length]) || s.match(o) ? e : "." + t;
+      f = function (e, r, i) {
+    return 0 === r && -1 !== ae.indexOf(i[n.length]) || i.match(o) ? e : "." + t;
   };
 
-  function m(e, s, i, a) {
+  function m(e, i, s, a) {
     void 0 === a && (a = "&");
-    var c = e.replace(ie, ""),
-        u = s && i ? i + " " + s + " { " + c + " }" : c;
-    return t = a, n = s, r = new RegExp("\\" + n + "\\b", "g"), o = new RegExp("(\\" + n + "\\b){2,}"), l(i || !s ? "" : s, u);
+    var c = e.replace(se, ""),
+        u = i && s ? s + " " + i + " { " + c + " }" : c;
+    return t = a, n = i, r = new RegExp("\\" + n + "\\b", "g"), o = new RegExp("(\\" + n + "\\b){2,}"), l(s || !i ? "" : i, u);
   }
 
   return l.use([].concat(u, [function (e, t, o) {
@@ -33854,7 +33874,7 @@ function me() {
 function ye(e) {
   var t = (0, _react.useState)(e.stylisPlugins),
       n = t[0],
-      s = t[1],
+      i = t[1],
       c = fe(),
       u = (0, _react.useMemo)(function () {
     var t = c;
@@ -33873,7 +33893,7 @@ function ye(e) {
     });
   }, [e.disableVendorPrefixes, n]);
   return (0, _react.useEffect)(function () {
-    (0, _shallowequal.default)(n, e.stylisPlugins) || s(e.stylisPlugins);
+    (0, _shallowequal.default)(n, e.stylisPlugins) || i(e.stylisPlugins);
   }, [e.stylisPlugins]), _react.default.createElement(ue.Provider, {
     value: u
   }, _react.default.createElement(de.Provider, {
@@ -33914,9 +33934,9 @@ var _e = function (e) {
 
 function Ne(e, n, r, o) {
   if (Array.isArray(e)) {
-    for (var s, i = [], a = 0, c = e.length; a < c; a += 1) "" !== (s = Ne(e[a], n, r, o)) && (Array.isArray(s) ? i.push.apply(i, s) : i.push(s));
+    for (var i, s = [], a = 0, c = e.length; a < c; a += 1) "" !== (i = Ne(e[a], n, r, o)) && (Array.isArray(i) ? s.push.apply(s, i) : s.push(i));
 
-    return i;
+    return s;
   }
 
   if (_e(e)) return "";
@@ -33932,11 +33952,11 @@ function Ne(e, n, r, o) {
   return e instanceof ve ? r ? (e.inject(r, o), e.getName(o)) : e : S(e) ? function e(t, n) {
     var r,
         o,
-        s = [];
+        i = [];
 
-    for (var i in t) t.hasOwnProperty(i) && !_e(t[i]) && (S(t[i]) ? s.push.apply(s, e(t[i], i)) : b(t[i]) ? s.push(be(i) + ":", t[i], ";") : s.push(be(i) + ": " + (r = i, null == (o = t[i]) || "boolean" == typeof o || "" === o ? "" : "number" != typeof o || 0 === o || r in _unitless.default ? String(o).trim() : o + "px") + ";"));
+    for (var s in t) t.hasOwnProperty(s) && !_e(t[s]) && (S(t[s]) ? i.push.apply(i, e(t[s], s)) : b(t[s]) ? i.push(be(s) + ":", t[s], ";") : i.push(be(s) + ": " + (r = s, null == (o = t[s]) || "boolean" == typeof o || "" === o ? "" : "number" != typeof o || 0 === o || r in _unitless.default ? String(o).trim() : o + "px") + ";"));
 
-    return n ? [n + " {"].concat(s, ["}"]) : s;
+    return n ? [n + " {"].concat(i, ["}"]) : i;
   }(e) : e.toString();
 }
 
@@ -33992,9 +34012,9 @@ function Be(e, t, n) {
 function Me(e) {
   for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
 
-  for (var o = 0, s = n; o < s.length; o++) {
-    var i = s[o];
-    if (xe(i)) for (var a in i) Ve(a) && Be(e, i[a], a);
+  for (var o = 0, i = n; o < i.length; o++) {
+    var s = i[o];
+    if (xe(s)) for (var a in s) Ve(a) && Be(e, s[a], a);
   }
 
   return e;
@@ -34029,14 +34049,14 @@ var Fe = {};
 
 function Ye(e, t, n) {
   var o = N(e),
-      i = !ke(e),
+      s = !ke(e),
       a = t.attrs,
       c = void 0 === a ? w : a,
       d = t.componentId,
       h = void 0 === d ? function (e, t) {
     var n = "string" != typeof e ? "sc" : je(e);
     Fe[n] = (Fe[n] || 0) + 1;
-    var r = n + "-" + Te("5.2.1" + n + Fe[n]);
+    var r = n + "-" + Te("5.3.0" + n + Fe[n]);
     return t ? t + "-" + r : r;
   }(t.displayName, t.parentComponentId) : d,
       p = t.displayName,
@@ -34046,17 +34066,17 @@ function Ye(e, t, n) {
       g = t.displayName && t.componentId ? je(t.displayName) + "-" + t.componentId : t.componentId || h,
       S = o && e.attrs ? Array.prototype.concat(e.attrs, c).filter(Boolean) : c,
       A = t.shouldForwardProp;
-  o && e.shouldForwardProp && (A = t.shouldForwardProp ? function (n, r) {
-    return e.shouldForwardProp(n, r) && t.shouldForwardProp(n, r);
+  o && e.shouldForwardProp && (A = t.shouldForwardProp ? function (n, r, o) {
+    return e.shouldForwardProp(n, r, o) && t.shouldForwardProp(n, r, o);
   } : e.shouldForwardProp);
 
   var C,
-      I = new se(n, g, o ? e.componentStyle : void 0),
+      I = new ie(n, g, o ? e.componentStyle : void 0),
       P = I.isStatic && 0 === c.length,
       O = function (e, t) {
     return function (e, t, n, r) {
       var o = e.attrs,
-          i = e.componentStyle,
+          s = e.componentStyle,
           a = e.defaultProps,
           c = e.foldedComponentIds,
           d = e.shouldForwardProp,
@@ -34073,27 +34093,27 @@ function Ye(e, t, n) {
         return n.forEach(function (e) {
           var t,
               n,
-              s,
-              i = e;
+              i,
+              s = e;
 
-          for (t in b(i) && (i = i(r)), i) r[t] = o[t] = "className" === t ? (n = o[t], s = i[t], n && s ? n + " " + s : n || s) : i[t];
+          for (t in b(s) && (s = s(r)), s) r[t] = o[t] = "className" === t ? (n = o[t], i = s[t], n && i ? n + " " + i : n || i) : s[t];
         }), [r, o];
       }(Oe(t, (0, _react.useContext)(ze), a) || E, t, o),
           y = f[0],
           g = f[1],
           S = function (e, t, n, r) {
         var o = fe(),
-            s = me(),
-            i = t ? e.generateAndInjectStyles(E, o, s) : e.generateAndInjectStyles(n, o, s);
-        return "production" !== "development" && (0, _react.useDebugValue)(i), "production" !== "development" && !t && r && r(i), i;
-      }(i, r, y, "production" !== "development" ? e.warnTooManyClasses : void 0),
+            i = me(),
+            s = t ? e.generateAndInjectStyles(E, o, i) : e.generateAndInjectStyles(n, o, i);
+        return "production" !== "development" && (0, _react.useDebugValue)(s), "production" !== "development" && !t && r && r(s), s;
+      }(s, r, y, "production" !== "development" ? e.warnTooManyClasses : void 0),
           w = n,
           _ = g.$as || t.$as || g.as || t.as || p,
           N = ke(_),
           A = g !== t ? v({}, t, {}, g) : t,
           C = {};
 
-      for (var I in A) "$" !== I[0] && "as" !== I && ("forwardedAs" === I ? C.as = A[I] : (d ? d(I, _isPropValid.default) : !N || (0, _isPropValid.default)(I)) && (C[I] = A[I]));
+      for (var I in A) "$" !== I[0] && "as" !== I && ("forwardedAs" === I ? C.as = A[I] : (d ? d(I, _isPropValid.default, _) : !N || (0, _isPropValid.default)(I)) && (C[I] = A[I]));
 
       return t.style && g.style !== t.style && (C.style = v({}, t.style, {}, g.style)), C.className = Array.prototype.concat(c, h, S !== h ? S : null, t.className, g.className).filter(Boolean).join(" "), C.ref = w, (0, _react.createElement)(_, C);
     }(C, e, t, P);
@@ -34106,17 +34126,17 @@ function Ye(e, t, n) {
       var n,
           r,
           o = {},
-          s = Object.keys(e);
+          i = Object.keys(e);
 
-      for (r = 0; r < s.length; r++) n = s[r], t.indexOf(n) >= 0 || (o[n] = e[n]);
+      for (r = 0; r < i.length; r++) n = i[r], t.indexOf(n) >= 0 || (o[n] = e[n]);
 
       return o;
     }(t, ["componentId"]),
-        s = r && r + "-" + (ke(e) ? e : je(_(e)));
+        i = r && r + "-" + (ke(e) ? e : je(_(e)));
 
     return Ye(e, v({}, o, {
       attrs: S,
-      componentId: s
+      componentId: i
     }), n);
   }, Object.defineProperty(C, "defaultProps", {
     get: function () {
@@ -34130,13 +34150,13 @@ function Ye(e, t, n) {
         r = !1;
     return function (o) {
       if (!r && (n[o] = !0, Object.keys(n).length >= 200)) {
-        var s = t ? ' with the id of "' + t + '"' : "";
-        console.warn("Over 200 classes were generated for component " + e + s + ".\nConsider using the attrs method, together with a style object for frequently changed styles.\nExample:\n  const Component = styled.div.attrs(props => ({\n    style: {\n      background: props.background,\n    },\n  }))`width: 100%;`\n\n  <Component />"), r = !0, n = {};
+        var i = t ? ' with the id of "' + t + '"' : "";
+        console.warn("Over 200 classes were generated for component " + e + i + ".\nConsider using the attrs method, together with a style object for frequently changed styles.\nExample:\n  const Component = styled.div.attrs(props => ({\n    style: {\n      background: props.background,\n    },\n  }))`width: 100%;`\n\n  <Component />"), r = !0, n = {};
       }
     };
   }(f, g)), C.toString = function () {
     return "." + C.styledComponentId;
-  }, i && (0, _hoistNonReactStatics.default)(C, e, {
+  }, s && (0, _hoistNonReactStatics.default)(C, e, {
     attrs: !0,
     componentStyle: !0,
     displayName: !0,
@@ -34152,21 +34172,21 @@ var qe = function (e) {
   return function e(t, r, o) {
     if (void 0 === o && (o = E), !(0, _reactIs.isValidElementType)(r)) return j(1, String(r));
 
-    var s = function () {
+    var i = function () {
       return t(r, o, Ae.apply(void 0, arguments));
     };
 
-    return s.withConfig = function (n) {
+    return i.withConfig = function (n) {
       return e(t, r, v({}, o, {}, n));
-    }, s.attrs = function (n) {
+    }, i.attrs = function (n) {
       return e(t, r, v({}, o, {
         attrs: Array.prototype.concat(o.attrs, n).filter(Boolean)
       }));
-    }, s;
+    }, i;
   }(Ye, e);
 };
 
-["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "menuitem", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr", "circle", "clipPath", "defs", "ellipse", "foreignObject", "g", "image", "line", "linearGradient", "marker", "mask", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "stop", "svg", "text", "tspan"].forEach(function (e) {
+["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "menuitem", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr", "circle", "clipPath", "defs", "ellipse", "foreignObject", "g", "image", "line", "linearGradient", "marker", "mask", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "stop", "svg", "text", "textPath", "tspan"].forEach(function (e) {
   qe[e] = qe(e);
 });
 
@@ -34178,8 +34198,8 @@ var He = function () {
   var t = e.prototype;
   return t.createStyles = function (e, t, n, r) {
     var o = r(Ne(this.rules, t, n, r).join(""), ""),
-        s = this.componentId + e;
-    n.insertRules(s, s, o);
+        i = this.componentId + e;
+    n.insertRules(i, i, o);
   }, t.removeStyles = function (e, t) {
     t.clearRules(this.componentId + e);
   }, t.renderStyles = function (e, t, n, r) {
@@ -34190,16 +34210,16 @@ var He = function () {
 function $e(e) {
   for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), o = 1; o < t; o++) n[o - 1] = arguments[o];
 
-  var i = Ae.apply(void 0, [e].concat(n)),
-      a = "sc-global-" + Te(JSON.stringify(i)),
-      u = new He(i, a);
+  var s = Ae.apply(void 0, [e].concat(n)),
+      a = "sc-global-" + Te(JSON.stringify(s)),
+      u = new He(s, a);
 
   function l(e) {
     var t = fe(),
         n = me(),
         o = (0, _react.useContext)(ze),
         l = (0, _react.useRef)(t.allocateGSInstance(a)).current;
-    return "production" !== "development" && _react.default.Children.count(e.children) && console.warn("The global style component " + a + " was given child JSX. createGlobalStyle does not render children."), "production" !== "development" && i.some(function (e) {
+    return "production" !== "development" && _react.default.Children.count(e.children) && console.warn("The global style component " + a + " was given child JSX. createGlobalStyle does not render children."), "production" !== "development" && s.some(function (e) {
       return "string" == typeof e && -1 !== e.indexOf("@import");
     }) && console.warn("Please do not use @import CSS syntax in createGlobalStyle at this time, as the CSSOM APIs we use in production do not handle it well. Instead, we recommend using a library such as react-helmet to inject a typical <link> meta tag to the stylesheet, or simply embedding it manually in your index.html <head> section for a simpler app."), (0, _react.useLayoutEffect)(function () {
       return h(l, e, t, o, n), function () {
@@ -34210,10 +34230,10 @@ function $e(e) {
 
   function h(e, t, n, r, o) {
     if (u.isStatic) u.renderStyles(e, O, n, o);else {
-      var s = v({}, t, {
+      var i = v({}, t, {
         theme: Oe(t, r, l.defaultProps)
       });
-      u.renderStyles(e, s, n, o);
+      u.renderStyles(e, i, n, o);
     }
   }
 
@@ -34226,8 +34246,8 @@ function We(e) {
   for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
 
   var o = Ae.apply(void 0, [e].concat(n)).join(""),
-      s = Te(o);
-  return new ve(s, o);
+      i = Te(o);
+  return new ve(i, o);
 }
 
 var Ue = function () {
@@ -34236,13 +34256,13 @@ var Ue = function () {
     this._emitSheetCSS = function () {
       var t = e.instance.toString(),
           n = q();
-      return "<style " + [n && 'nonce="' + n + '"', A + '="true"', 'data-styled-version="5.2.1"'].filter(Boolean).join(" ") + ">" + t + "</style>";
+      return "<style " + [n && 'nonce="' + n + '"', A + '="true"', 'data-styled-version="5.3.0"'].filter(Boolean).join(" ") + ">" + t + "</style>";
     }, this.getStyleTags = function () {
       return e.sealed ? j(2) : e._emitSheetCSS();
     }, this.getStyleElement = function () {
       var t;
       if (e.sealed) return j(2);
-      var n = ((t = {})[A] = "", t["data-styled-version"] = "5.2.1", t.dangerouslySetInnerHTML = {
+      var n = ((t = {})[A] = "", t["data-styled-version"] = "5.3.0", t.dangerouslySetInnerHTML = {
         __html: e.instance.toString()
       }, t),
           o = q();
@@ -34268,8 +34288,8 @@ var Ue = function () {
     Je = function (e) {
   var t = _react.default.forwardRef(function (t, n) {
     var o = (0, _react.useContext)(ze),
-        i = e.defaultProps,
-        a = Oe(t, o, i);
+        s = e.defaultProps,
+        a = Oe(t, o, s);
     return "production" !== "development" && void 0 === a && console.warn('[withTheme] You are not using a ThemeProvider nor passing a theme prop or a theme in defaultProps in component class "' + _(e) + '"'), _react.default.createElement(e, v({}, t, {
       theme: a,
       ref: n
@@ -34293,13 +34313,13 @@ exports.ServerStyleSheet = Ue;
 "production" !== "development" && "undefined" != typeof navigator && "ReactNative" === navigator.product && console.warn("It looks like you've imported 'styled-components' on React Native.\nPerhaps you're looking to import 'styled-components/native'?\nRead more about this at https://www.styled-components.com/docs/basics#react-native"), "production" !== "development" && "test" !== "development" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, 1 === window["__styled-components-init__"] && console.warn("It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.\n\nSee https://s-c.sh/2BAXzed for more info."), window["__styled-components-init__"] += 1);
 var _default = qe;
 exports.default = _default;
-},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"../../AppData/Roaming/npm/node_modules/parcel-bundler/node_modules/process/browser.js"}],"Style.js":[function(require,module,exports) {
+},{"react-is":"node_modules/react-is/index.js","react":"node_modules/react/index.js","shallowequal":"node_modules/shallowequal/index.js","@emotion/stylis":"node_modules/@emotion/stylis/dist/stylis.browser.esm.js","@emotion/unitless":"node_modules/@emotion/unitless/dist/unitless.browser.esm.js","@emotion/is-prop-valid":"node_modules/@emotion/is-prop-valid/dist/is-prop-valid.browser.esm.js","hoist-non-react-statics":"node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js","process":"node_modules/process/browser.js"}],"Style.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.ContainerToday = void 0;
+exports.ButtonDegree = exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.ContainerToday = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34543,6 +34563,12 @@ const ButtonContainer = _styledComponents.default.div`
    top: 0.5rem
 `;
 exports.ButtonContainer = ButtonContainer;
+const ButtonDegree = _styledComponents.default.button`
+  border-radius: 50%;
+  height: 50px;
+  width: 50px; 
+`;
+exports.ButtonDegree = ButtonDegree;
 },{"styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/Searchplace.js":[function(require,module,exports) {
 "use strict";
 
@@ -34557,9 +34583,9 @@ var _Context = require("../Context");
 
 var _Style = require("../Style");
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function Searchplace() {
   const {
@@ -34585,7 +34611,7 @@ function Searchplace() {
     setLocation(e.target.id);
   }
 
-  const TypeLocation = weatherDetail?.slice(1).map(local => {
+  const TypeLocation = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(1).map(local => {
     const todays = new Date();
     const tomorow = new Date(todays);
     tomorow.setDate(tomorow.getDate() + 1);
@@ -34596,21 +34622,23 @@ function Searchplace() {
     }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
   const locationweather = weather.map(location => {
-    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.LocationName, {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+      key: location.id
+    }, /*#__PURE__*/_react.default.createElement(_Style.LocationName, {
       type: "button",
       id: location.title,
       onClick: weatherDetailButton,
       key: location.id
     }, location.title)));
   });
-  const timeToday = weatherDetail?.slice(0, 1).map(today => {
+  const timeToday = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(0, 1).map(today => {
     return /*#__PURE__*/_react.default.createElement(_Style.Today, {
       key: today.id
     }, /*#__PURE__*/_react.default.createElement(_Style.ImageToday, {
       src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
     }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", Date.now()), /*#__PURE__*/_react.default.createElement(_Style.Locatio, null, weather[0].title));
   });
-  const windWeahter = weatherDetail?.slice(0, 1).map(wind => {
+  const windWeahter = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(0, 1).map(wind => {
     return /*#__PURE__*/_react.default.createElement(_Style.TodayHightlight, {
       key: wind.id
     }, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, "Wind status"), /*#__PURE__*/_react.default.createElement(_Style.Speed, null, Math.round(wind.wind_speed), " ", /*#__PURE__*/_react.default.createElement(_Style.SubSpeed, null, " mph "))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("progress", {
@@ -34630,7 +34658,7 @@ function Searchplace() {
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement(_Style.ContainerToday, null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement("button", null, "\xBAC"), /*#__PURE__*/_react.default.createElement("button", null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement(_Style.ContainerToday, null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAC"), /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
 }
 
 var _default = Searchplace;
@@ -34697,7 +34725,7 @@ var _App = _interopRequireDefault(require("./App"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_Context.ContextProvider, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react.default.createElement(_App.default, null))), document.getElementById("root"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./Context":"Context.js","./App":"App.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./Context":"Context.js","./App":"App.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -34725,7 +34753,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50485" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44601" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -34901,5 +34929,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
 //# sourceMappingURL=/Onja-weather-application.e31bb0bc.js.map
