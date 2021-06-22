@@ -7,7 +7,7 @@ export const ContainerToday = styled.div`
   padding: 1rem;
   width: 100%;
   height: 100%;
-  position: fixed
+  // position: fixed;
   overflow: hidden;
 
   // @media (min-width: 800px) {
