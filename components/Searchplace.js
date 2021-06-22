@@ -34,6 +34,8 @@ import {
   Locatio,
   ImageNextDay,
   ButtonDegree,
+  SearchCountry,
+
 } from "../Style";
 
 function Searchplace() {
@@ -73,7 +75,7 @@ function Searchplace() {
           <ImageNextDay
             src={`https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`}
           />
-          <div>{local.wind_direction_compass}</div>
+          {/* <div>{local.wind_direction_compass}</div> */}
           <Degre>
             <div>
               {Math.round(local.min_temp)}
@@ -167,7 +169,7 @@ function Searchplace() {
     <>
       <Table>
         <div>
-          <div>
+          <SearchCountry>
             <BottomSearch type="button" onClick={handleClick}>
               Search for places
             </BottomSearch>
@@ -188,20 +190,22 @@ function Searchplace() {
                 </div>
               </Container3>
             )}
-          </div>
+          </SearchCountry>
           <ContainerToday>{timeToday}</ContainerToday>
         </div>
         <div>
-          <ButtonContainer>
-            <ButtonDegree>ºC</ButtonDegree>
-            <ButtonDegree>ºF</ButtonDegree>
-          </ButtonContainer>
-          <Tablegrid>{TypeLocation}</Tablegrid>
+          <div>
+            <ButtonContainer>
+              <ButtonDegree>ºC</ButtonDegree>
+              <ButtonDegree>ºF</ButtonDegree>
+            </ButtonContainer>
+            <Tablegrid>{TypeLocation}</Tablegrid>
+          </div>
+          <Hightlight>
+            <TodayHightlighttitle> Today's Hightlight </TodayHightlighttitle>
+            <div>{windWeahter}</div>
+          </Hightlight>
         </div>
-        <Hightlight>
-          <TodayHightlighttitle> Today's Hightlight </TodayHightlighttitle>
-          <div>{windWeahter}</div>
-        </Hightlight>
       </Table>
     </>
   );

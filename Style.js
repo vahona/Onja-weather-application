@@ -5,11 +5,20 @@ export const ContainerToday = styled.div`
   background-color: #1e213a;
   color: white;
   padding: 1rem;
-  @media (min-width: 800px) {
-  padding-bottom: 10rem;
-  }
+  width: 100%;
+  height: 100%;
+  position: fixed
+  overflow: hidden;
+
+  // @media (min-width: 800px) {
+  // padding-bottom: 10rem;
+  // }
   
 `;
+
+export const SearchCountry = styled.div`
+  // height: 100%
+`
 
 export const Today = styled.div`
   margin-inline-start: 2rem;
@@ -18,8 +27,11 @@ export const Today = styled.div`
 export const Container = styled.div`
   background-color: #1e213a;
   color: white;
-  padding: 2rem;
-  padding-bottom: 1rem;
+  // padding: 2rem;
+  // padding-bottom: 1rem;
+  height: 217px;
+  width: 148px;
+  margin-top: 107px
   
 `;
 
@@ -80,8 +92,10 @@ export const Header = styled.h1`
 `;
 
 export const Table = styled.div`
-  display: grid;
-  grid-template-columns: 350px auto;
+ display: grid;
+ grid-template-columns: 25.05% auto;
+ grid-column-gap: 84px
+  
 `;
 
 export const LocationName = styled.button`
@@ -113,11 +127,13 @@ export const Airpress = styled.div`
 
 export const Degre = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 23px;
 `;
 
 export const GrayDeg = styled.div`
-  color: gray
+  color: gray;
+  margin-left: 13px
 
 `
 
@@ -131,6 +147,8 @@ export const ImageToday = styled.img`
 export const ImageNextDay = styled.img`
   margin-top: 1rem;
   width: 70%;
+  margin-left: 20px;
+  margin-right: 20px
 `;
 
 export const TodayDegree = styled.div`
@@ -199,7 +217,7 @@ export const TodayHightlight = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 350px);
     margin-inline-start: 3rem;
-    grid-gap: 2rem
+    grid-column-gap: 23px
   }
 
  
@@ -207,12 +225,12 @@ export const TodayHightlight = styled.div`
 
 export const Tablegrid = styled.div`
 
- @media (min-width: 800px) {
+
    display: grid;
    grid-template-columns: repeat(5, 1fr);
    margin: 2rem;
-   grid-gap: 1rem;
- }
+   grid-column-gap: 23px
+
  `;
 
 export const TodayHightlighttitle = styled.h2`
@@ -222,14 +240,18 @@ export const TodayHightlighttitle = styled.h2`
   }
 `;
 
+// export const ContainerEstimation = styled.div`
+//  float: left;
+// `
 
 
 export const Hightlight = styled.div`
+
 margin-top: 4rem;
-  @media (min-width: 800px) {
-    grid-column: 2;
-    margin-top: -400px;
-  }
+  // @media (min-width: 800px) {
+  //   grid-column: 2;
+  //   margin-top: -400px;
+  // }
 `;
 
 export const Smallcontainer = styled.div`

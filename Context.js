@@ -48,6 +48,7 @@ function ContextProvider({ children }) {
       const response = await fetch(API_URL);
       const data = await response.json();
       setWeather(data);
+      console.log("works")
     } catch (e) {
       console.error(e);
     }

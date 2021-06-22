@@ -32336,6 +32336,7 @@ function ContextProvider({
       const response = await fetch(API_URL);
       const data = await response.json();
       setWeather(data);
+      console.log("works");
     } catch (e) {
       console.error(e);
     }
@@ -34319,7 +34320,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonDegree = exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.ContainerToday = void 0;
+exports.ButtonDegree = exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.SearchCountry = exports.ContainerToday = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34329,12 +34330,21 @@ const ContainerToday = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
   padding: 1rem;
-  @media (min-width: 800px) {
-  padding-bottom: 10rem;
-  }
+  width: 100%;
+  height: 100%;
+  position: fixed
+  overflow: hidden;
+
+  // @media (min-width: 800px) {
+  // padding-bottom: 10rem;
+  // }
   
 `;
 exports.ContainerToday = ContainerToday;
+const SearchCountry = _styledComponents.default.div`
+  // height: 100%
+`;
+exports.SearchCountry = SearchCountry;
 const Today = _styledComponents.default.div`
   margin-inline-start: 2rem;
 `;
@@ -34342,8 +34352,11 @@ exports.Today = Today;
 const Container = _styledComponents.default.div`
   background-color: #1e213a;
   color: white;
-  padding: 2rem;
-  padding-bottom: 1rem;
+  // padding: 2rem;
+  // padding-bottom: 1rem;
+  height: 217px;
+  width: 148px;
+  margin-top: 107px
   
 `;
 exports.Container = Container;
@@ -34405,8 +34418,10 @@ const Header = _styledComponents.default.h1`
 `;
 exports.Header = Header;
 const Table = _styledComponents.default.div`
-  display: grid;
-  grid-template-columns: 350px auto;
+ display: grid;
+ grid-template-columns: 25.05% auto;
+ grid-column-gap: 84px
+  
 `;
 exports.Table = Table;
 const LocationName = _styledComponents.default.button`
@@ -34436,11 +34451,13 @@ const Airpress = _styledComponents.default.div`
 exports.Airpress = Airpress;
 const Degre = _styledComponents.default.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 23px;
 `;
 exports.Degre = Degre;
 const GrayDeg = _styledComponents.default.div`
-  color: gray
+  color: gray;
+  margin-left: 13px
 
 `;
 exports.GrayDeg = GrayDeg;
@@ -34454,6 +34471,8 @@ exports.ImageToday = ImageToday;
 const ImageNextDay = _styledComponents.default.img`
   margin-top: 1rem;
   width: 70%;
+  margin-left: 20px;
+  margin-right: 20px
 `;
 exports.ImageNextDay = ImageNextDay;
 const TodayDegree = _styledComponents.default.div`
@@ -34522,7 +34541,7 @@ const TodayHightlight = _styledComponents.default.div`
     display: grid;
     grid-template-columns: repeat(2, 350px);
     margin-inline-start: 3rem;
-    grid-gap: 2rem
+    grid-column-gap: 23px
   }
 
  
@@ -34530,12 +34549,12 @@ const TodayHightlight = _styledComponents.default.div`
 exports.TodayHightlight = TodayHightlight;
 const Tablegrid = _styledComponents.default.div`
 
- @media (min-width: 800px) {
+
    display: grid;
    grid-template-columns: repeat(5, 1fr);
    margin: 2rem;
-   grid-gap: 1rem;
- }
+   grid-column-gap: 23px
+
  `;
 exports.Tablegrid = Tablegrid;
 const TodayHightlighttitle = _styledComponents.default.h2`
@@ -34543,14 +34562,18 @@ const TodayHightlighttitle = _styledComponents.default.h2`
     margin-top: 2rem;
     margin-inline-start: 3rem;
   }
-`;
+`; // export const ContainerEstimation = styled.div`
+//  float: left;
+// `
+
 exports.TodayHightlighttitle = TodayHightlighttitle;
 const Hightlight = _styledComponents.default.div`
+
 margin-top: 4rem;
-  @media (min-width: 800px) {
-    grid-column: 2;
-    margin-top: -400px;
-  }
+  // @media (min-width: 800px) {
+  //   grid-column: 2;
+  //   margin-top: -400px;
+  // }
 `;
 exports.Hightlight = Hightlight;
 const Smallcontainer = _styledComponents.default.div`
@@ -34619,7 +34642,7 @@ function Searchplace() {
       key: local.id
     }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement(_Style.ImageNextDay, {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement("div", null, local.wind_direction_compass), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
+    }), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
   const locationweather = weather.map(location => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
@@ -34647,7 +34670,7 @@ function Searchplace() {
       value: wind.humidity
     })), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, "Visibility"), /*#__PURE__*/_react.default.createElement(_Style.Visibility, null, Math.round(wind.visibility), /*#__PURE__*/_react.default.createElement(_Style.SubVisibility, null, "miles")))), /*#__PURE__*/_react.default.createElement(_Style.Smallcontainer, null, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, " Air presseur "), /*#__PURE__*/_react.default.createElement(_Style.Airpress, null, " ", wind.air_pressure, " ", /*#__PURE__*/_react.default.createElement("sub", null, "mb"), " "))));
   });
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.BottomSearch, {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Style.Table, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.SearchCountry, null, /*#__PURE__*/_react.default.createElement(_Style.BottomSearch, {
     type: "button",
     onClick: handleClick
   }, "Search for places"), model && /*#__PURE__*/_react.default.createElement(_Style.Container3, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonClose, {
@@ -34658,7 +34681,7 @@ function Searchplace() {
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement(_Style.ContainerToday, null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAC"), /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter))));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement(_Style.ContainerToday, null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAC"), /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)))));
 }
 
 var _default = Searchplace;
@@ -34753,7 +34776,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44601" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34267" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
