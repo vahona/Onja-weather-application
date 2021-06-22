@@ -34478,7 +34478,7 @@ exports.ImageNextDay = ImageNextDay;
 const TodayDegree = _styledComponents.default.div`
   font-style: normal;
   font-weight: 500;
-  font-size: 144px;
+  font-size: 6rem;
   line-height: 169px;
   color: #e7e7eb;
 `;
@@ -34634,6 +34634,8 @@ function Searchplace() {
     setLocation(e.target.id);
   }
 
+  const date = Date.now();
+  const realdate = new Date(date);
   const TypeLocation = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(1).map(local => {
     const todays = new Date();
     const tomorow = new Date(todays);
@@ -34655,11 +34657,14 @@ function Searchplace() {
     }, location.title)));
   });
   const timeToday = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(0, 1).map(today => {
+    const date = Date.now();
+    const realdate = new Date(date).toDateString();
+    console.log(realdate);
     return /*#__PURE__*/_react.default.createElement(_Style.Today, {
       key: today.id
     }, /*#__PURE__*/_react.default.createElement(_Style.ImageToday, {
       src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", Date.now()), /*#__PURE__*/_react.default.createElement(_Style.Locatio, null, weather[0].title));
+    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", realdate), /*#__PURE__*/_react.default.createElement(_Style.Locatio, null, weather[0].title));
   });
   const windWeahter = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(0, 1).map(wind => {
     return /*#__PURE__*/_react.default.createElement(_Style.TodayHightlight, {

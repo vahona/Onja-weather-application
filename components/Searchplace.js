@@ -64,6 +64,12 @@ function Searchplace() {
     setLocation(e.target.id)
   }
 
+  const date = Date.now()
+
+  const realdate = new Date(date);
+
+
+
   const TypeLocation = weatherDetail?.slice(1).map((local) => {
     const todays = new Date();
     const tomorow = new Date(todays)
@@ -111,8 +117,11 @@ function Searchplace() {
 
 
   const timeToday = weatherDetail?.slice(0, 1).map((today) => {
+    const date = Date.now();
+    const realdate = new Date(date).toDateString()
 
 
+    console.log(realdate);
     return (
       <Today key={today.id}>
         <ImageToday
@@ -123,7 +132,7 @@ function Searchplace() {
           <sup>ºC</sup>
         </TodayDegree>
         <div>{today.weather_state_name}</div>
-        <div>Today: {Date.now()}</div>
+        <div>Today: {realdate}</div>
         <Locatio>{weather[0].title}</Locatio>
       </Today>
     );

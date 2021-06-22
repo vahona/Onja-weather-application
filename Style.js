@@ -154,7 +154,7 @@ export const ImageNextDay = styled.img`
 export const TodayDegree = styled.div`
   font-style: normal;
   font-weight: 500;
-  font-size: 144px;
+  font-size: 6rem;
   line-height: 169px;
   color: #e7e7eb;
 `;
