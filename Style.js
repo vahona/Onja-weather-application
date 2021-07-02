@@ -16,6 +16,14 @@ export const ContainerToday = styled.div`
   
 `;
 
+export const NextDate = styled.div`
+   justify-content: center;
+   align-items: center;
+   margin-left: 1.5rem;
+   padding-top: 1rem;
+   
+`
+
 export const SearchCountry = styled.div`
   // height: 100%
 `

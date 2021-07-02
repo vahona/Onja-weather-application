@@ -32324,6 +32324,7 @@ function ContextProvider({
   const locationWoeidWeather = async () => {
     try {
       const responses = await fetch(API_URL2);
+      console.log(API_URL2);
       const datas = await responses.json();
       setWeatherDetail(datas.consolidated_weather); // setWeather(datas.consolidated_weather);
     } catch (e) {
@@ -32336,7 +32337,6 @@ function ContextProvider({
       const response = await fetch(API_URL);
       const data = await response.json();
       setWeather(data);
-      console.log("works");
     } catch (e) {
       console.error(e);
     }
@@ -32345,7 +32345,6 @@ function ContextProvider({
   (0, _react.useEffect)(() => {
     locationWeather();
   }, [location]);
-  console.log(location, weather);
   (0, _react.useEffect)(() => {
     weather === null || weather === void 0 ? void 0 : weather.map(weather => setLocationWoeid(weather.woeid)); // const cityWoeid = weather?.woeid;
     // setLocationWoeid(cityWoeid);
@@ -32356,12 +32355,10 @@ function ContextProvider({
 
   function handleClick() {
     setModel(!model);
-    console.log(model);
   }
 
   function CloseSearch() {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   }
 
   function Loading() {
@@ -34320,7 +34317,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonDegree = exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.SearchCountry = exports.ContainerToday = void 0;
+exports.ButtonDegree = exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.SearchCountry = exports.NextDate = exports.ContainerToday = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34341,6 +34338,14 @@ const ContainerToday = _styledComponents.default.div`
   
 `;
 exports.ContainerToday = ContainerToday;
+const NextDate = _styledComponents.default.div`
+   justify-content: center;
+   align-items: center;
+   margin-left: 1.5rem;
+   padding-top: 1rem;
+   
+`;
+exports.NextDate = NextDate;
 const SearchCountry = _styledComponents.default.div`
   // height: 100%
 `;
@@ -34635,14 +34640,15 @@ function Searchplace() {
   }
 
   const date = Date.now();
-  const realdate = new Date(date);
+  const realdate = new Date(date); // (fTemp - 32) * 5 / 9;
+
   const TypeLocation = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(1).map(local => {
     const todays = new Date();
     const tomorow = new Date(todays);
-    tomorow.setDate(tomorow.getDate() + 1);
+    const nextDay = tomorow.setDate(tomorow.getDate() + 1);
     return /*#__PURE__*/_react.default.createElement("div", {
       key: local.id
-    }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement(_Style.ImageNextDay, {
+    }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement(_Style.NextDate, null, " ", local.applicable_date, " "), /*#__PURE__*/_react.default.createElement(_Style.ImageNextDay, {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
     }), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
   });
@@ -34659,7 +34665,6 @@ function Searchplace() {
   const timeToday = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(0, 1).map(today => {
     const date = Date.now();
     const realdate = new Date(date).toDateString();
-    console.log(realdate);
     return /*#__PURE__*/_react.default.createElement(_Style.Today, {
       key: today.id
     }, /*#__PURE__*/_react.default.createElement(_Style.ImageToday, {
@@ -34781,7 +34786,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "34267" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33431" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

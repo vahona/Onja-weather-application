@@ -33,6 +33,7 @@ function ContextProvider({ children }) {
   const locationWoeidWeather = async () => {
     try {
       const responses = await fetch(API_URL2);
+      console.log(API_URL2);
       const datas = await responses.json();
       setWeatherDetail(datas.consolidated_weather);
       // setWeather(datas.consolidated_weather);
@@ -46,9 +47,9 @@ function ContextProvider({ children }) {
   const locationWeather = async () => {
     try {
       const response = await fetch(API_URL);
+
       const data = await response.json();
       setWeather(data);
-      console.log("works")
     } catch (e) {
       console.error(e);
     }
@@ -58,7 +59,7 @@ function ContextProvider({ children }) {
     locationWeather();
   }, [location]);
 
-  console.log(location, weather)
+
 
   useEffect(() => {
     weather?.map((weather) => setLocationWoeid(weather.woeid));
@@ -75,13 +76,13 @@ function ContextProvider({ children }) {
 
   function handleClick() {
     setModel(!model)
-    console.log(model)
+
   }
 
 
   function CloseSearch() {
     setIsOpen(!isOpen)
-    console.log(isOpen)
+
   }
 
   function Loading() {

@@ -35,6 +35,7 @@ import {
   ImageNextDay,
   ButtonDegree,
   SearchCountry,
+  NextDate,
 
 } from "../Style";
 
@@ -68,16 +69,16 @@ function Searchplace() {
 
   const realdate = new Date(date);
 
-
+  // (fTemp - 32) * 5 / 9;
 
   const TypeLocation = weatherDetail?.slice(1).map((local) => {
     const todays = new Date();
     const tomorow = new Date(todays)
-    tomorow.setDate(tomorow.getDate() + 1)
+    const nextDay = tomorow.setDate(tomorow.getDate() + 1)
     return (
       <div key={local.id}>
         <Container>
-          <div></div>
+          <NextDate> {local.applicable_date} </NextDate>
           <ImageNextDay
             src={`https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`}
           />
@@ -119,9 +120,6 @@ function Searchplace() {
   const timeToday = weatherDetail?.slice(0, 1).map((today) => {
     const date = Date.now();
     const realdate = new Date(date).toDateString()
-
-
-    console.log(realdate);
     return (
       <Today key={today.id}>
         <ImageToday
@@ -188,7 +186,7 @@ function Searchplace() {
                   <ButtonClose type="button" onClick={handleClick}>
                     X
                   </ButtonClose>
-                  <Form onSubmit={searchLocation}>
+                  <Form onSubmit={searchLocation} >
                     <Input type="text" id="location" />
                     <Button>Search</Button>
                   </Form>
@@ -205,8 +203,8 @@ function Searchplace() {
         <div>
           <div>
             <ButtonContainer>
-              <ButtonDegree>ºC</ButtonDegree>
-              <ButtonDegree>ºF</ButtonDegree>
+              <ButtonDegree >ºC</ButtonDegree>
+              <ButtonDegree >ºF</ButtonDegree>
             </ButtonContainer>
             <Tablegrid>{TypeLocation}</Tablegrid>
           </div>
