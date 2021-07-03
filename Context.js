@@ -13,6 +13,8 @@ function ContextProvider({ children }) {
   const [isOpen, setIsOpen] = useState(true);
   const [isloadding, setIsloading] = useState(true)
 
+  const [isCelsius, setIsCelsius] = useState(true)
+
   // Feacting the api
 
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
@@ -43,11 +45,9 @@ function ContextProvider({ children }) {
   };
 
 
-
   const locationWeather = async () => {
     try {
       const response = await fetch(API_URL);
-
       const data = await response.json();
       setWeather(data);
     } catch (e) {
@@ -59,8 +59,6 @@ function ContextProvider({ children }) {
     locationWeather();
   }, [location]);
 
-
-
   useEffect(() => {
     weather?.map((weather) => setLocationWoeid(weather.woeid));
     // const cityWoeid = weather?.woeid;
@@ -71,8 +69,6 @@ function ContextProvider({ children }) {
   useEffect(() => {
     locationWoeidWeather();
   }, [locationWoeid]);
-
-
 
   function handleClick() {
     setModel(!model)
@@ -92,6 +88,10 @@ function ContextProvider({ children }) {
   useEffect(() => {
     setIsloading();
   }, [isloadding]);
+
+  useEffect(() => {
+    setIsCelsius()
+  }, [isCelsius]);
 
   return (
     <Context.Provider
@@ -113,6 +113,8 @@ function ContextProvider({ children }) {
         isloadding,
         setIsloading,
         Loading,
+        isCelsius,
+        setIsCelsius
       }}
     >
       {children}

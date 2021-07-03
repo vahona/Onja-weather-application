@@ -32306,7 +32306,8 @@ function ContextProvider({
   const [weatherDetail, setWeatherDetail] = (0, _react.useState)([]);
   const [model, setModel] = (0, _react.useState)(false);
   const [isOpen, setIsOpen] = (0, _react.useState)(true);
-  const [isloadding, setIsloading] = (0, _react.useState)(true); // Feacting the api
+  const [isloadding, setIsloading] = (0, _react.useState)(true);
+  const [isCelsius, setIsCelsius] = (0, _react.useState)(true); // Feacting the api
 
   let API_URL = `https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?`;
   const locations = `query=${location}`;
@@ -32368,6 +32369,9 @@ function ContextProvider({
   (0, _react.useEffect)(() => {
     setIsloading();
   }, [isloadding]);
+  (0, _react.useEffect)(() => {
+    setIsCelsius();
+  }, [isCelsius]);
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       location,
@@ -32386,7 +32390,9 @@ function ContextProvider({
       CloseSearch,
       isloadding,
       setIsloading,
-      Loading
+      Loading,
+      isCelsius,
+      setIsCelsius
     }
   }, children);
 }
@@ -34627,7 +34633,9 @@ function Searchplace() {
     CloseSearch,
     isloadding,
     setIsloading,
-    Loading
+    Loading,
+    isCelsius,
+    setIsCelsius
   } = (0, _react.useContext)(_Context.Context);
 
   function searchLocation(e) {
@@ -34637,6 +34645,11 @@ function Searchplace() {
 
   function weatherDetailButton(e) {
     setLocation(e.target.id);
+  }
+
+  function changeUnit(e) {
+    console.log(e);
+    setIsCelsius(false);
   }
 
   const date = Date.now();
@@ -34650,7 +34663,7 @@ function Searchplace() {
       key: local.id
     }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement(_Style.NextDate, null, " ", local.applicable_date, " "), /*#__PURE__*/_react.default.createElement(_Style.ImageNextDay, {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")))));
+    }), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, changeUnit ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC"))) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, (Math.round(local.min_temp) - 32) * 5 / 9, " ", /*#__PURE__*/_react.default.createElement("sup", null, "\xBA F"), " "), " ", /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, (Math.round(local.max_temp) - 32) * 5 / 9, /*#__PURE__*/_react.default.createElement("sup", null, "\xBAF")))))));
   });
   const locationweather = weather.map(location => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
@@ -34691,7 +34704,9 @@ function Searchplace() {
   }, /*#__PURE__*/_react.default.createElement(_Style.Input, {
     type: "text",
     id: "location"
-  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement(_Style.ContainerToday, null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAC"), /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)))));
+  }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement(_Style.ContainerToday, null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, {
+    onClick: changeUnit
+  }, "\xBAC"), /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)))));
 }
 
 var _default = Searchplace;
@@ -34786,7 +34801,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33431" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40437" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

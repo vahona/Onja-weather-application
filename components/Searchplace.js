@@ -52,6 +52,8 @@ function Searchplace() {
     isloadding,
     setIsloading,
     Loading,
+    isCelsius,
+    setIsCelsius
   } = useContext(Context);
 
 
@@ -63,6 +65,11 @@ function Searchplace() {
 
   function weatherDetailButton(e) {
     setLocation(e.target.id)
+  }
+
+  function changeUnit(e) {
+    console.log(e);
+    setIsCelsius(false)
   }
 
   const date = Date.now()
@@ -85,13 +92,31 @@ function Searchplace() {
           {/* <div>{local.wind_direction_compass}</div> */}
           <Degre>
             <div>
-              {Math.round(local.min_temp)}
-              <sup>º C</sup>
+              {changeUnit
+                ?
+                <div>
+                  <div>
+                    {Math.round(local.min_temp)}
+                    <sup>º C</sup>
+                  </div>
+                  <GrayDeg>
+                    {Math.round(local.max_temp)}
+                    <sup>
+                      ºC
+                    </sup>
+                  </GrayDeg>
+                </div> : <div><div>{(Math.round(local.min_temp) - 32) * 5 / 9} <sup>º F</sup> </div> <GrayDeg>
+                  {(Math.round(local.max_temp) - 32) * 5 / 9}
+                  <sup>ºF</sup>
+                </GrayDeg></div>}
             </div>
+            {/* {Math.round(local.min_temp)}
+              <sup>º C</sup>
+            
             <GrayDeg>
-              {Math.round(local.max_temp)}
+              ${Math.round(local.max_temp)}
               <sup>ºC</sup>
-            </GrayDeg>
+            </GrayDeg> */}
           </Degre>
         </Container>
       </div>
@@ -203,7 +228,7 @@ function Searchplace() {
         <div>
           <div>
             <ButtonContainer>
-              <ButtonDegree >ºC</ButtonDegree>
+              <ButtonDegree onClick={changeUnit}>ºC</ButtonDegree>
               <ButtonDegree >ºF</ButtonDegree>
             </ButtonContainer>
             <Tablegrid>{TypeLocation}</Tablegrid>
