@@ -16,6 +16,11 @@ export const ContainerToday = styled.div`
   
 `;
 
+export const State = styled.div`
+    color : rgb(136,134,157);
+    font-size: 32px;
+`
+
 export const NextDate = styled.div`
    justify-content: center;
    align-items: center;
@@ -136,7 +141,7 @@ export const Airpress = styled.div`
 export const Degre = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 23px;
+  margin-top: 10px;
 `;
 
 export const GrayDeg = styled.div`
@@ -232,8 +237,6 @@ export const TodayHightlight = styled.div`
 `;
 
 export const Tablegrid = styled.div`
-
-
    display: grid;
    grid-template-columns: repeat(5, 1fr);
    margin: 2rem;
@@ -248,9 +251,9 @@ export const TodayHightlighttitle = styled.h2`
   }
 `;
 
-// export const ContainerEstimation = styled.div`
-//  float: left;
-// `
+export const Progress = styled.progress`
+  background: blue;
+`
 
 
 export const Hightlight = styled.div`

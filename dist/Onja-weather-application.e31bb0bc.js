@@ -34323,7 +34323,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ButtonDegree = exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.SearchCountry = exports.NextDate = exports.ContainerToday = void 0;
+exports.ButtonDegree = exports.ButtonContainer = exports.Smallcontainer = exports.Hightlight = exports.Progress = exports.TodayHightlighttitle = exports.Tablegrid = exports.TodayHightlight = exports.ButtonClose = exports.Button = exports.Input = exports.SubVisibility = exports.SubSpeed = exports.Visibility = exports.Speed = exports.TodayDegree = exports.ImageNextDay = exports.ImageToday = exports.GrayDeg = exports.Degre = exports.Airpress = exports.SubHeader = exports.Griddiv = exports.LocationName = exports.Table = exports.Header = exports.BottomSearch = exports.Locatio = exports.Body = exports.Container2 = exports.Form = exports.Container3 = exports.Container1 = exports.Container = exports.Today = exports.SearchCountry = exports.NextDate = exports.State = exports.ContainerToday = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
@@ -34344,6 +34344,11 @@ const ContainerToday = _styledComponents.default.div`
   
 `;
 exports.ContainerToday = ContainerToday;
+const State = _styledComponents.default.div`
+    color : rgb(136,134,157);
+    font-size: 32px;
+`;
+exports.State = State;
 const NextDate = _styledComponents.default.div`
    justify-content: center;
    align-items: center;
@@ -34463,7 +34468,7 @@ exports.Airpress = Airpress;
 const Degre = _styledComponents.default.div`
   display: flex;
   justify-content: center;
-  margin-top: 23px;
+  margin-top: 10px;
 `;
 exports.Degre = Degre;
 const GrayDeg = _styledComponents.default.div`
@@ -34559,8 +34564,6 @@ const TodayHightlight = _styledComponents.default.div`
 `;
 exports.TodayHightlight = TodayHightlight;
 const Tablegrid = _styledComponents.default.div`
-
-
    display: grid;
    grid-template-columns: repeat(5, 1fr);
    margin: 2rem;
@@ -34573,11 +34576,12 @@ const TodayHightlighttitle = _styledComponents.default.h2`
     margin-top: 2rem;
     margin-inline-start: 3rem;
   }
-`; // export const ContainerEstimation = styled.div`
-//  float: left;
-// `
-
+`;
 exports.TodayHightlighttitle = TodayHightlighttitle;
+const Progress = _styledComponents.default.progress`
+  background: blue;
+`;
+exports.Progress = Progress;
 const Hightlight = _styledComponents.default.div`
 
 margin-top: 4rem;
@@ -34653,9 +34657,12 @@ function Searchplace() {
   }
 
   const date = Date.now();
-  const realdate = new Date(date); // (fTemp - 32) * 5 / 9;
+  const realdate = new Date(date); // monthNames[d.getMonth()]
+  // (fTemp - 32) * 5 / 9;
 
   const TypeLocation = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(1).map(local => {
+    const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     const todays = new Date();
     const tomorow = new Date(todays);
     const nextDay = tomorow.setDate(tomorow.getDate() + 1);
@@ -34663,7 +34670,7 @@ function Searchplace() {
       key: local.id
     }, /*#__PURE__*/_react.default.createElement(_Style.Container, null, /*#__PURE__*/_react.default.createElement(_Style.NextDate, null, " ", local.applicable_date, " "), /*#__PURE__*/_react.default.createElement(_Style.ImageNextDay, {
       src: `https://www.metaweather.com/static/img/weather/${local.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, changeUnit ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC"))) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, (Math.round(local.min_temp) - 32) * 5 / 9, " ", /*#__PURE__*/_react.default.createElement("sup", null, "\xBA F"), " "), " ", /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, (Math.round(local.max_temp) - 32) * 5 / 9, /*#__PURE__*/_react.default.createElement("sup", null, "\xBAF")))))));
+    }), /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, changeUnit ? /*#__PURE__*/_react.default.createElement(_Style.Degre, null, /*#__PURE__*/_react.default.createElement("div", null, Math.round(local.min_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBA C")), /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, Math.round(local.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC"))) : /*#__PURE__*/_react.default.createElement("div", null, " ", /*#__PURE__*/_react.default.createElement("div", null, " ", (Math.round(local.min_temp) - 32) * 5 / 9, " ", /*#__PURE__*/_react.default.createElement("sup", null, " \xBAF "), " "), " ", /*#__PURE__*/_react.default.createElement(_Style.GrayDeg, null, (Math.round(local.max_temp) - 32) * 5 / 9, /*#__PURE__*/_react.default.createElement("sup", null, " \xBAF ")))))));
   });
   const locationweather = weather.map(location => {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
@@ -34682,12 +34689,12 @@ function Searchplace() {
       key: today.id
     }, /*#__PURE__*/_react.default.createElement(_Style.ImageToday, {
       src: `https://www.metaweather.com/static/img/weather/${today.weather_state_abbr}.svg`
-    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement("div", null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", realdate), /*#__PURE__*/_react.default.createElement(_Style.Locatio, null, weather[0].title));
+    }), /*#__PURE__*/_react.default.createElement(_Style.TodayDegree, null, Math.round(today.max_temp), /*#__PURE__*/_react.default.createElement("sup", null, "\xBAC")), /*#__PURE__*/_react.default.createElement(_Style.State, null, today.weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, "Today: ", realdate), /*#__PURE__*/_react.default.createElement(_Style.Locatio, null, weather[0].title));
   });
   const windWeahter = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(0, 1).map(wind => {
     return /*#__PURE__*/_react.default.createElement(_Style.TodayHightlight, {
       key: wind.id
-    }, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, "Wind status"), /*#__PURE__*/_react.default.createElement(_Style.Speed, null, Math.round(wind.wind_speed), " ", /*#__PURE__*/_react.default.createElement(_Style.SubSpeed, null, " mph "))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement("progress", {
+    }, /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, "Wind status"), /*#__PURE__*/_react.default.createElement(_Style.Speed, null, Math.round(wind.wind_speed), " ", /*#__PURE__*/_react.default.createElement(_Style.SubSpeed, null, " mph "))), /*#__PURE__*/_react.default.createElement(_Style.Container2, null, /*#__PURE__*/_react.default.createElement(_Style.SubHeader, null, "Humidity"), /*#__PURE__*/_react.default.createElement("div", null, wind.humidity, "%"), /*#__PURE__*/_react.default.createElement(_Style.Progress, {
       id: "file",
       max: "100",
       value: wind.humidity
@@ -34801,7 +34808,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40437" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42151" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

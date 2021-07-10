@@ -36,7 +36,8 @@ import {
   ButtonDegree,
   SearchCountry,
   NextDate,
-
+  State,
+  Progress,
 } from "../Style";
 
 function Searchplace() {
@@ -70,15 +71,23 @@ function Searchplace() {
   function changeUnit(e) {
     console.log(e);
     setIsCelsius(false)
+
   }
 
   const date = Date.now()
 
   const realdate = new Date(date);
 
+
+  // monthNames[d.getMonth()]
+
   // (fTemp - 32) * 5 / 9;
 
   const TypeLocation = weatherDetail?.slice(1).map((local) => {
+    const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+
+    const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
     const todays = new Date();
     const tomorow = new Date(todays)
     const nextDay = tomorow.setDate(tomorow.getDate() + 1)
@@ -94,7 +103,7 @@ function Searchplace() {
             <div>
               {changeUnit
                 ?
-                <div>
+                <Degre>
                   <div>
                     {Math.round(local.min_temp)}
                     <sup>º C</sup>
@@ -105,10 +114,11 @@ function Searchplace() {
                       ºC
                     </sup>
                   </GrayDeg>
-                </div> : <div><div>{(Math.round(local.min_temp) - 32) * 5 / 9} <sup>º F</sup> </div> <GrayDeg>
+                </Degre> : <div> <div> {(Math.round(local.min_temp) - 32) * 5 / 9} <sup> ºF </sup> </div> <GrayDeg>
                   {(Math.round(local.max_temp) - 32) * 5 / 9}
-                  <sup>ºF</sup>
-                </GrayDeg></div>}
+                  <sup> ºF </sup>
+                </GrayDeg>
+                </div>}
             </div>
             {/* {Math.round(local.min_temp)}
               <sup>º C</sup>
@@ -154,7 +164,7 @@ function Searchplace() {
           {Math.round(today.max_temp)}
           <sup>ºC</sup>
         </TodayDegree>
-        <div>{today.weather_state_name}</div>
+        <State>{today.weather_state_name}</State>
         <div>Today: {realdate}</div>
         <Locatio>{weather[0].title}</Locatio>
       </Today>
@@ -174,7 +184,7 @@ function Searchplace() {
         <Container2>
           <SubHeader>Humidity</SubHeader>
           <div>{wind.humidity}%</div>
-          <progress id="file" max="100" value={wind.humidity}></progress>
+          <Progress id="file" max="100" value={wind.humidity}></Progress>
         </Container2>
         <Smallcontainer>
           <Container2>
