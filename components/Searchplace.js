@@ -88,6 +88,8 @@ function Searchplace() {
 
     const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+    // const dateMonthName = month_names_short[local.applicable_date.getMonth()]
+
     const todays = new Date();
     const tomorow = new Date(todays)
     const nextDay = tomorow.setDate(tomorow.getDate() + 1)

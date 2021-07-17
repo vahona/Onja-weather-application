@@ -34662,7 +34662,8 @@ function Searchplace() {
 
   const TypeLocation = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(1).map(local => {
     const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; // const dateMonthName = month_names_short[local.applicable_date.getMonth()]
+
     const todays = new Date();
     const tomorow = new Date(todays);
     const nextDay = tomorow.setDate(tomorow.getDate() + 1);
@@ -34808,7 +34809,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42151" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46119" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
