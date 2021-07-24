@@ -34662,7 +34662,12 @@ function Searchplace() {
 
   const TypeLocation = weatherDetail === null || weatherDetail === void 0 ? void 0 : weatherDetail.slice(1).map(local => {
     const weekday = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']; // const dateMonthName = month_names_short[local.applicable_date.getMonth()]
+    const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const options = {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    }; // const dateMonthName = month_names_short[local.applicable_date.getMonth()]
 
     const todays = new Date();
     const tomorow = new Date(todays);
@@ -34714,7 +34719,9 @@ function Searchplace() {
     id: "location"
   }), /*#__PURE__*/_react.default.createElement(_Style.Button, null, "Search"))), /*#__PURE__*/_react.default.createElement("div", null), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, locationweather)))), /*#__PURE__*/_react.default.createElement(_Style.ContainerToday, null, timeToday)), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Style.ButtonContainer, null, /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, {
     onClick: changeUnit
-  }, "\xBAC"), /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, null, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)))));
+  }, "\xBAC"), /*#__PURE__*/_react.default.createElement(_Style.ButtonDegree, {
+    onClick: changeUnit
+  }, "\xBAF")), /*#__PURE__*/_react.default.createElement(_Style.Tablegrid, null, TypeLocation)), /*#__PURE__*/_react.default.createElement(_Style.Hightlight, null, /*#__PURE__*/_react.default.createElement(_Style.TodayHightlighttitle, null, " Today's Hightlight "), /*#__PURE__*/_react.default.createElement("div", null, windWeahter)))));
 }
 
 var _default = Searchplace;
@@ -34809,7 +34816,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46119" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35369" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

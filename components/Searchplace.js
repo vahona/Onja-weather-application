@@ -88,6 +88,8 @@ function Searchplace() {
 
     const month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
+    const options = { year: 'numeric', month: 'short', day: 'numeric' }
+
     // const dateMonthName = month_names_short[local.applicable_date.getMonth()]
 
     const todays = new Date();
@@ -241,7 +243,7 @@ function Searchplace() {
           <div>
             <ButtonContainer>
               <ButtonDegree onClick={changeUnit}>ºC</ButtonDegree>
-              <ButtonDegree >ºF</ButtonDegree>
+              <ButtonDegree onClick={changeUnit} >ºF</ButtonDegree>
             </ButtonContainer>
             <Tablegrid>{TypeLocation}</Tablegrid>
           </div>
